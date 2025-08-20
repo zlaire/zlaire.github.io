@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base target="_top">
+
+    <!-- Allow web app to be run in full-screen mode - iOS. -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- Allow web app to be run in full-screen mode - Android. -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <!-- Configure the status bar - iOS. -->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- Set the viewport. -->
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimal-ui">
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <!-- Compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+    <!-- Compiled and minified JavaScript effects in texbox-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
+    <style>
+        body {
+            margin: 0;
+            /* Remove default margin */
+        }
+
+        iframe {
+            display: block;
+            /* iframes are inline by default */
+            height: 100vh;
+            /* Set height to 100% of the viewport height */
+            width: 100vw;
+            /* Set width to 100% of the viewport width */
+            border: none;
+            /* Remove default border */
+            background: PaleGreen;
+            /* Just for styling */
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="verifyPage_main" class="card-panel white lighten-5 z-depth-5">
+
+        <br>
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAgVBMVEX///8AAAATExPc3Nyfn5/f398QEBANDQ0ICAhtbW1+fn6bm5vNzc2SkpI5OTlYWFi9vb2urq7t7e3CwsIiIiIXFxfz8/OysrI/Pz8zMzPn5+dfX190dHSlpaX5+flHR0eGhoYnJyfS0tIuLi4dHR1MTExnZ2dSUlKDg4NycnKOjo6rsgx5AAAG4klEQVR4nO2d63qqOhBAmahJrLq9g8WCVdG2vv8Dngx3rdXi5ZChs360RKFfltDMhIToOAzDMAzDMMxfxv/sIl/TuivyLCYRaATAq7sqT2IAQkgphVDbuqvyJN5AyNlsNhcycuuuy3MwhhCaX7rRhvEvNiQLG9InM2x0S6MWi8WsudHiYCK+Usr8WNddlScxiTCfEUJAUHdVnoVJ29QqEupf3RV5GsYQ3KFuuOGEDUnDhvRhQ/qwIX3YkD5sSB82pA8b0ocN6cOG9GFD+rAhfdiQPmxIHzakDxvShw3pw4b0YUP6sCF92JA+bEgfNqQPG9KnFxsqtai7Is9itFBCrudCiEFYd12ewgFwFrsUOJX9tYmPI2xACJ0gBbzVXZ0n8A5CfyyHhuVMxA/PNI0vkFH675c+HtQ0Sg90sSFRzhuOdiJGzvZ+bVV7EGcNB6BlCkCrvso9hHOGPkihsgiiVzXW7hGcMxyDULv90rDfmiBJ/Do9Z9jGRNXJNzs1Ve1B/GSYnrgeG9oPG7Kh/fx5Q/LRIgy/tIx8FzGbAuINPHEt92TzCBq3O8JguAXQJr2GBI03MmLyjdJrx2yXY+stA1N9JcVtSKUBxnUrXGYPuJKC1qBvQuGp39ctcYk94NW3e3u5jbcVXsrQrVvjZ3pYv7d7Og1+F/9E+2E1ejATc4neXTvzKcmsC2IdOFLxcvdfeTF/ZfCA2jyDf0rC/be3XbB2PRT3Qe0gtsd2jgN0zOXVywqbXlU22aH2Jq0tKNqZ1rmM5QrZ3TdMWu28E1c2DKByQpOvtkTD0F1XPoXr7H+PhqETdqqSp9xEDO+ADevjjxn6o6rkCTsNw84N8TCL8jQMmx8PJzecw6zLRMPQcftVyZNtIoZ3wIb18ccM/WlViMVD/4a2NFOkYdj8eNj8c+i4lfNSjocWwIa/hYhh2KoKsfs0ze9bND8eNv+et9MaVyWXImJ4B2xYH2z4W9iwPk4M++Pg1+1oMO4XBxIx9NYVo+E6/xJBGoafUHVum4TP9FgShjg5Slc6hVrk0xwoGMaTo/b9CgPA/X0xFYqCIc4X+byy9ymf+VwVCoZLnBZc8WgXhF7GWxQMV7c8o75QKnnai4Lh4kbD5CA2rA82vAIbWgAbXoENLYANr8CGFsCGV2BDC/hLhjslq39V9VqqXbxBwRAfbt5c2fuUDWQrZlEwHIFQ22oP9nS2SsAo3qRg6PzTQsGywtOjS1BCp0+skTBs4Xp0VW6YamE+klSLhKHTmoOSVVAwJzbKHbYXs/nvmS3axGabIOH3RRN+pLzOAB3DW2HD+mDD30LB0PWCmFHagHSSYpANZffTcpr2hKOk6CWjOQQM20Ukj/Owr7y4xZnO/jovf+HbXrF7kBxuu2FQjHBLMKetW8zi08p1XKWL2Xpdx5mWd8fBfOsNQxwATlBCvWKnISubNw7OAfLFeQR2QUzKrbPUTc0dAoZ982ufTIpdmP6CiwPC7bg4nUu9clZazqdxGVV6uEjEKtl9qOOlBqw3NF0nSJuUwGz675APCMcjp/lIKA77wrtvfqTLCnlJt5KS4bia4YiIIV6l3U582a2yqzTAcmcapVdp1I/LeIp7E1w1Ot69g8P/LQKGxy3NGo0vtjTrUksjpUPAEGtYNP9Tx1meRAtdihbLo2iRXK/2GzqDIoRjfAuXxxG/U0T8JSY9pYifJgzWGzqTcTvGS7O2VpCUs6xtmhSD1CP00t3JZG13QsHQbx+QQZA+JLIZHM4xSO+pToLk/SB5Po+A4ftxKh0Oz99fMwzxMg6KcrzGl/2Gg3JbajoXHz8/PwMf2NCU2lL8RKw3dIt4aFLpqBwPTxGY/UQyv7NqPhGHgCHmNC8TH/kwScoE16kbJ+VjJpjUDTCnGcZvT7pAI6e5kJeeQDUvbb5hH6fCJot5/Msy78HZtT4GWf9wkZQ/iPQPMfPWWeatj/r4Z1qajfOK41Tp7qZhImBors28+Vcn92m+RYsunnN1FFwIGJZCuJhi+eXHiB+vBTotTnH8VAkBQycceTHT9B3fO0+2isI03T1J1CkY3gcb1gcb/hY2rI/mG2KGeTh9sfW+vMz7N5kD2PpVSWEk9e7kNRPsryylD9+WAN/p/Hv3bGOoTy8vTNikuoT8to6+udjV8P+sdgU8HEYqvzDC3Dp6vcQcd5mWD8KhAM+xlFdTuWGpL4gn9doC8gPs4xdFd2jvkuyOk9ySmQX5uv+n5/QseM6ybT+Ikps31oID3NJ0KWYJplsUrWeXWUemk5VuC4iPt/pbSrz422Sy6XiitP0j4vgAsPefMMHfw9UAcSl0QNfOUFhmMn7p3sqnZ+t3dzAMwzAMwzDP5T+th7UtrBBr4wAAAABJRU5ErkJggg==" class="ndfHFb-c4YZDc-HiaYvf-RJLb9c" alt="www.cdminstructors.com" aria-hidden="true">
+        <style>
+            img {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+            }
+        </style>
+        
+        
+        <h4 style="text-align:center;">PARR v1.0</h4>
+        <h6 style="text-align:center;">Philippine Amateur Radio Reviewer (beta v1.0)</h6>
+        <!-- <h6 style="text-align:center;">NTC Class C Element 2 (II)</h6> -->
+        <!-- <p id="current_date" style="text-align:center;"></p> -->
+
+
+
+        <br><br>
+
+
+        Start Here!<br>
+        <a href="https://drive.google.com/file/d/1dIXBeQmUUskFgM2sotM5gnQt__jWAAsb/view">-NTC Element 2 (II) Seminar Notes(Full)</a><br>
+        <a href="https://drive.google.com/file/d/1VucoD3_4cjaaExedOQmDwZF7OCg907_N/view">-NTC Element 2 (II) Seminar Notes (Compressed)</a><br><br>
+        
+        
+
+        Addons:<br>
+        <!-- <a href="https://drive.google.com/file/d/1An-SU4copdrutydoztXbF4YZBNKUMBgw/view">-NTC Element 3 (III) Notes</a><br> -->
+        <!-- <a href="2ClassCElement2.htm">-NTC Element 2 (II) Pre Exam! v1.0</a><br> -->
+        <a href="v2.html">-NTC Element 2 (II) Pre Exam! v2.0</a><br><br>
+        <br>
+        
+        NTC Memo Circulars, Office Orders:<br><br>
+        <a href="https://drive.google.com/file/d/1rkmn_0ki8IbQx-U6-d2T0_KMNCyMxtc3/view">-MC-03-08-2012 -Revised Amateur Radio
+            Regulations</a><br><br>
+        <a href="https://drive.google.com/file/d/1P5vxwz8i1Vg_modTqQXnsbKc7gZGg1xv/view">-OO_108-12-2012 -Guidelines for the
+            Assignment of Callsigns in the ARS</a><br><br>
+        <a href="https://drive.google.com/file/d/1-KjUP0s9sankxpCuMQwlgT_m54UQ5zEe/">-OO_75-05-2016 - Guidelines in the
+            Application for Amateur Radio Examination and Issuance of Amateur Radio Station License (ARSL), Radio Operator
+            Certificate (RAOC)</a><br><br>
+        <a href="https://drive.google.com/file/d/1puIkxW2TjrSrVCMpa_ASGbL7vwySxM_9">-OO-183-12-2016 - Guidelines in the
+            Additional Allocation of Prefixes in the Amateur Radio Service</a><br>
+        <br>
+        <br>
+
+   
+
+
+
+     
+    </div>      
+
+    <!-- <iframe src="https://quizlet.com/94807489/test/embed?i=5wkmg8&x=1jj1" height="500" width="100%" style="border:0"></iframe> -->
+    <!-- <iframe src="https://quizlet.com/918648542/test/embed?i=5wkmg8&x=1jj1"></iframe> -->
+
+    <!-- <iframe src="https://quizlet.com/918648542/test/embed?i=5wkmg8&x=1jj1"></iframe> -->
+
+
+
+
+
+
+
+</body>
+
+</html>

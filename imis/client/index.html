@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+
+            <!-- #################################################################-->
+            <!-- ##########################  HEAD AREA ########################-->
+            <!-- #################################################################-->  
+            <head>
+                <base target="_top">
+
+                <!-- Allow web app to be run in full-screen mode - iOS. -->
+                <meta name="apple-mobile-web-app-capable" content="yes">
+                <!-- Allow web app to be run in full-screen mode - Android. -->
+                <meta name="mobile-web-app-capable" content="yes">
+                <!-- Configure the status bar - iOS. -->
+                <meta name="apple-mobile-web-app-status-bar-style" content="black">
+                <!-- Set the viewport. -->
+                <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, maximum-scale=1, minimal-ui">
+
+                <!-- https://code.jquery.com/--> 
+                <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> 
+
+                <!-- Bootstrap CSS -->
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+            
+                  <!-- Bootstrap Bundle with Popper -->
+                <!-- https://getbootstrap.com/docs/5.2/getting-started/introduction/--> 
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
+        
+                <!-- Bootstrap FONTS -->
+                <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+                <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+            </head>
+
+
+            <!-- #################################################################-->
+            <!-- ##########################  START BODY AREA ########################-->
+            <!-- #################################################################-->  
+
+            <body>       
+
+            <!-- ########################## START-CALL-MODAL-PRELOADER AREA ########################-->
+                <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+                    <script>
+                        $(function() {
+                            $("#includeHtml").load("https://infra.cdmmis.com/loading_modal.html");
+                        });
+                    </script>
+                <div id="includeHtml"></div>
+            <!-- ########################## END-CALL-MODAL-PRELOADER AREA ########################-->
+
+              
+            <!-- ##########################  NAVBAR AREA ########################-->
+                    <nav class="navbar navbar-dark bg-dark fixed-top">
+                    <div class="container-fluid">
+                        <a class="navbar-brand" href="#">LOCATION:IMIS</a>
+                        <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasDarkNavbar" aria-controls="offcanvasDarkNavbar">
+                        <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="offcanvas offcanvas-end text-bg-dark" tabindex="-1" id="offcanvasDarkNavbar" aria-labelledby="offcanvasDarkNavbarLabel">
+                        <div class="offcanvas-header">
+                            <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">LOCATION:IMIS</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                        </div>
+                        <div class="offcanvas-body">
+                            <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <a class="nav-link " aria-current="page" href="https://infra.cdmmis.com/gs/">GS</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link active" href="https://infra.cdmmis.com/imis/client/">IMIS</a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Dropdown
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-dark">
+                                <li><a class="dropdown-item" href="#">Action</a></li>
+                                <li><a class="dropdown-item" href="#">Another action</a></li>
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                </ul>
+                            </li>
+                            </ul>
+                            <form class="d-flex mt-3" role="search">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-success" type="submit">Search</button>
+                            </form>
+                        </div>
+                        </div>
+                    </div>
+                    </nav>
+            <!-- ##########################  NAVBAR AREA ########################-->
+
+
+                    
+  
+
+
+                    <!-- ########################## START-IFRAME AREA ########################-->
+                    <!-- https://html.spec.whatwg.org/multipage/browsers.html#sandboxed-top-level-navigation-with-user-activation-browsing-context-flag -->
+
+                        <iframe sandbox="allow-scripts allow-popups allow-forms allow-same-origin allow-popups-to-escape-sandbox allow-downloads allow-modals allow-storage-access-by-user-activation allow-top-navigation allow-top-navigation-by-user-activation "
+                                frameborder="0"
+                                aria-label="Apps Script"
+                                src="https://script.google.com/macros/s/AKfycbxW1UYF6fSLCTD-j4tR_IzDqDtDBycj9_e29rYtFrwwifyzB1BFsLkAxlaQ3ALCEw/exec"
+                                allowfullscreen="">
+                        </iframe>
+                                <style>
+                                    body {
+                                        margin: 0;
+                                        /* Remove default margin */
+                                    }
+
+                                    iframe {
+                                        display: block;
+                                        /* iframes are inline by default */
+                                        height: 100vh;
+                                        /* Set height to 100% of the viewport height */
+                                        width: 100vw;
+                                        /* Set width to 100% of the viewport width */
+                                        border: none;
+                                        /* Remove default border */
+                                        background: PaleGreen;
+                                        /* Just for styling */
+                                    }
+                                </style>
+                    <!-- ########################## END-IFRAME AREA ########################-->
+
+
+
+</body>
+
+</html>
