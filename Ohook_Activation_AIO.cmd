@@ -401,7 +401,6 @@ echo Your version of MAS [%masver%] is outdated.
 echo ________________________________________________
 echo:
 if not %_unattended%==1 (
-echo [1] Get Latest MAS
 echo [0] Continue Anyway
 echo:
 call :dk_color %_Green% "Choose a menu option using your keyboard [1,0] :"
@@ -3389,3 +3388,4 @@ M--u-D----BE-----QBW-GE-cgBG-Gk-b-Bl-Ek-bgBm-G8------CQ-B----FQ-cgBh-G4-cwBs-GE-
 
 ::========================================================================================================================================
 :: Leave empty line below
+
