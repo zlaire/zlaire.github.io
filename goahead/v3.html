@@ -1,0 +1,2540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4H1NWP | NTC Amateur Radio Licensure Exam Practice</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+        
+        :root {
+            --primary: #0f172a;
+            --accent: #2563eb;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .glass-nav {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .option-btn {
+            transition: all 0.2s ease;
+        }
+
+        .option-btn.selected {
+            border-color: var(--accent);
+            background-color: #eff6ff;
+            box-shadow: 0 0 0 1px var(--accent);
+        }
+
+        .feedback-enter {
+            animation: slideDown 0.4s ease forwards;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="min-h-screen pb-24">
+
+    <!-- Navigation -->
+    <nav class="glass-nav sticky top-0 z-50 text-white px-4 py-3 shadow-lg">
+        <div class="max-w-4xl mx-auto flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <div class="bg-blue-600 p-1.5 rounded-lg">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.111 16.404a5.5 5.5 0 017.778 0M12 20h.01m-7.08-7.071c3.904-3.905 10.236-3.905 14.141 0M1.394 9.393c5.857-5.857 15.355-5.857 21.213 0" />
+                    </svg>
+                </div>
+                <span class="font-extrabold text-xl tracking-tight uppercase">4H1NWP <span class="text-blue-400">PH</span></span>
+            </div>
+            <div class="text-sm font-bold bg-slate-800 px-4 py-1.5 rounded-full border border-slate-700" id="nav-stats">
+                0 / 0 Questions
+            </div>
+        </div>
+    </nav>
+
+    <div class="max-w-4xl mx-auto px-4 pt-8">
+        <header class="mb-8">
+            <h1 class="text-3xl font-black text-slate-900 leading-none">NTC REVIEWER</h1>
+            <p class="text-slate-500 font-medium mt-1">Philippine Amateur Radio Rules & Regulations</p>
+        </header>
+
+        <!-- Configuration Bar -->
+        <div class="bg-white rounded-2xl p-4 shadow-sm border border-slate-200 mb-8 sticky top-20 z-40 flex flex-wrap items-center justify-between gap-4">
+            <div class="flex items-center space-x-2 bg-slate-100 p-1 rounded-xl w-full sm:w-auto">
+                <button onclick="setMode('exam')" id="mode-exam" class="flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all bg-white shadow-sm text-blue-600">Exam Mode</button>
+                <button onclick="setMode('study')" id="mode-study" class="flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase transition-all text-slate-500">Study Mode</button>
+            </div>
+            
+            <div class="flex-1 min-w-[200px]">
+                <div class="flex justify-between text-[10px] font-black uppercase text-slate-400 mb-1">
+                    <span>Progress</span>
+                    <span id="progress-percent">0%</span>
+                </div>
+                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                    <div id="pb-fill" class="h-full bg-blue-600 transition-all duration-500 w-0"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="result-area" class="hidden mb-8"></div>
+        <div id="quiz-container" class="space-y-6"></div>
+
+        <!-- Action Footer -->
+        <div class="fixed bottom-0 left-0 right-0 p-4 bg-white/90 backdrop-blur-md border-t border-slate-200 z-50">
+            <div class="max-w-4xl mx-auto flex gap-4">
+                <button id="submit-btn" onclick="gradeQuiz()" class="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-black py-4 rounded-2xl shadow-xl shadow-blue-200 transition-all transform active:scale-95 uppercase tracking-wider">
+                    Submit Exam
+                </button>
+            </div>
+        </div>
+    </div>
+
+<script>
+    const sourceData = {
+        "data": [
+		
+		
+    {
+      "NO.": "1",
+      "QUESTION": "\u003Cb\u003E\u003Ci\u003EPhilippine Amateur Radio Rules And Regulations\n\u003Cbr\u003E\u003Cbr\u003E\nThis quiz aims to assist aspiring amateur radio operators in successfully passing their licensure examinations.\u003C/b\u003E\u003C/i\u003E\nChoose the correct answer:\n\u003Cbr\u003E\u003Cbr\u003E\n1. The amateur frequency bands allocated by the Regulations to the amateurs shall be used only by",
+      "CHOICE A": "Non-licensed amateurs",
+      "CHOICE B": "Class A Amateurs only",
+      "CHOICE C": "Class D Amateurs only",
+      "ANSWER": "Licensed amateurs",
+      "FEED-BACK": "Feedback:\nThe correct answer is \"Licensed amateurs\". This means that only individuals who have obtained a valid amateur radio license are allowed to use the amateur frequency bands allocated by the Regulations. Non-licensed amateurs, Class D Amateurs, and Class A Amateurs are not permitted to use these frequency bands."
+    },
+    {
+      "NO.": "2",
+      "QUESTION": "2. It shall be indicated in the amateur radio station license and in the radio amateur operator certificate.",
+      "CHOICE A": "Frequency bands",
+      "CHOICE B": "Code name",
+      "CHOICE C": "Trasmit power",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rThe correct answer is call sign. In amateur radio, the call sign is a unique identifier assigned to each licensed operator. It is used to identify the operator and their location when communicating with other stations. The call sign is also included in the radio amateur operator certificate, which serves as proof of the operator's qualifications and authorization to use the radio frequencies."
+    },
+    {
+      "NO.": "3",
+      "QUESTION": "3. Which is part of the Amateur Radio District No. 7",
+      "CHOICE A": "Davao City",
+      "CHOICE B": "Manila",
+      "CHOICE C": "Zamboanga",
+      "ANSWER": "Cebu City",
+      "FEED-BACK": "Feedback:  Cebu City is part of Amateur Radio District No. 7"
+    },
+    {
+      "NO.": "4",
+      "QUESTION": "4. Dagupan City belongs to what amateur radio district?",
+      "CHOICE A": "District 4",
+      "CHOICE B": "District 3",
+      "CHOICE C": "District 1",
+      "ANSWER": "District 2",
+      "FEED-BACK": "Feedback: \rDagupan City belongs to District 2 in terms of amateur radio."
+    },
+    {
+      "NO.": "5",
+      "QUESTION": "5. Which Element is not prescribed for Class C examination?",
+      "CHOICE A": "Element II",
+      "CHOICE B": "Element III",
+      "CHOICE C": "Element IV",
+      "ANSWER": "Element I",
+      "FEED-BACK": "Feedback: \rElement I is for Class A only"
+    },
+    {
+      "NO.": "6",
+      "QUESTION": "6. What is the distinctive identification carried by all transmissions in the amateur radio service consisting of numbers and letters assigned by NTC?",
+      "CHOICE A": "Call ID",
+      "CHOICE B": "Call signature",
+      "CHOICE C": "Call name",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rThe distinctive identification carried by all transmissions in the amateur radio service consisting of numbers and letters assigned by NTC is called a call sign. A call sign is a unique combination of characters that identifies a specific radio station or operator. It is used to establish communication and to ensure proper identification in the amateur radio community."
+    },
+    {
+      "NO.": "7",
+      "QUESTION": "7. Dumaguete City belongs to which Amateur Radio District?",
+      "CHOICE A": "District 8",
+      "CHOICE B": "District 5",
+      "CHOICE C": "District 6",
+      "ANSWER": "District 7",
+      "FEED-BACK": "Feedback: \rDumaguete City belongs to Amateur Radio District 7."
+    },
+    {
+      "NO.": "8",
+      "QUESTION": "8. Iloilo, Negros Occidental, Capiz belong to which Amateur Radio District?",
+      "CHOICE A": "District 3",
+      "CHOICE B": "District 4",
+      "CHOICE C": "District 5",
+      "ANSWER": "District 6",
+      "FEED-BACK": "Feedback: \rIloilo, Negros Occidental, and Capiz belong to Amateur Radio District 6."
+    },
+    {
+      "NO.": "9",
+      "QUESTION": "9. A radio station intended to be used during unspecified halts or while in motion is called?",
+      "CHOICE A": "Portable",
+      "CHOICE B": "Base",
+      "CHOICE C": "Moving",
+      "ANSWER": "Mobile",
+      "FEED-BACK": "Feedback: \rA radio station intended to be used during unspecified halts or while in motion is called \"mobile\" because it is designed to be easily transported and used in different locations, whether the vehicle is stationary or moving. This type of radio station is commonly used in vehicles such as cars, trucks, and boats, allowing for communication while on the go."
+    },
+    {
+      "NO.": "10",
+      "QUESTION": "10. On November 11, 1931, what law did the Philippine Legislature enact which is known as the Radio Control Law of the Philippines?",
+      "CHOICE A": "Act No. 3864",
+      "CHOICE B": "Act No. 3486",
+      "CHOICE C": "Act No. 8346",
+      "ANSWER": "Act No. 3846",
+      "FEED-BACK": ""
+    },
+    {
+      "NO.": "11",
+      "QUESTION": "11. The Philippines is divided into how many radio amateur districts?",
+      "CHOICE A": "10",
+      "CHOICE B": "11",
+      "CHOICE C": "8",
+      "ANSWER": "9",
+      "FEED-BACK": "Feedback: \rThe Philippines is divided into nine radio amateur districts. This means that the country has been segmented into nine separate regions or areas for the purpose of organizing and managing radio amateur activities. Each district likely has its own set of regulations and guidelines for amateur radio operators within its jurisdiction."
+    },
+    {
+      "NO.": "12",
+      "QUESTION": "12. If an amateur with a DU9XX call sign temporarily operates a portable station in Zamboanga for less than a month, how should he identify his station in radiotelephony?",
+      "CHOICE A": "DU9XX portable 1",
+      "CHOICE B": "DU1XX portable 1",
+      "CHOICE C": "DU8XX portable 8",
+      "ANSWER": "DU9XX portable 8",
+      "FEED-BACK": "Feedback: \rWhen an amateur with a DU9XX call sign temporarily operates a portable station in Zamboanga for less than a month, he should identify his station in radiotelephony as DU9XX portable 8. This is because the call sign DU9XX belongs to the amateur, and the addition of \"portable 8\" signifies that he is operating a portable station in Zamboanga."
+    },
+    {
+      "NO.": "13",
+      "QUESTION": "13. What is the emergency channel?",
+      "CHOICE A": "145.460 MHz +/-25 KHz",
+      "CHOICE B": "145.5 MHz +/-25 KHz",
+      "CHOICE C": "144 MHz +50 KHz",
+      "ANSWER": "145 MHz +/-25 KHz",
+      "FEED-BACK": "Feedback: \rThe emergency channel is a frequency used for emergency communications. The correct answer is 145 MHz +/-25 KHz, which means that the emergency channel is centered around 145 MHz and has a tolerance of +/-25 KHz. This frequency range allows for effective communication during emergencies and is commonly used by emergency services and organizations."
+    },
+    {
+      "NO.": "14",
+      "QUESTION": "14. The NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines by issuing a Temporary Permit valid for _______ upon submission of the required documents.",
+      "CHOICE A": "6 months",
+      "CHOICE B": "9 months",
+      "CHOICE C": "2 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC (National Telecommunications Commission) has the authority to grant a Temporary Permit to a foreign visitor for operating an amateur radio station in the Philippines. This permit is valid for a period of 1 year. The foreign visitor must submit the necessary documents to obtain this permit."
+    },
+    {
+      "NO.": "15",
+      "QUESTION": "15. A station in the amateur service installed on board a vehicle or vessel and intended to be used while in motion or during halts at unspecified points.",
+      "CHOICE A": "Amateur Satellite Station",
+      "CHOICE B": "Amateur Portable Station",
+      "CHOICE C": "Amateur Fixed Station",
+      "ANSWER": "Amateur Mobile Station",
+      "FEED-BACK": "Feedback: \rAn amateur mobile station refers to a station in the amateur service that is installed on a vehicle or vessel and is intended to be used while in motion or during halts at unspecified points. This type of station allows amateur radio operators to communicate while on the move, providing flexibility and the ability to stay connected even when traveling. It is different from a fixed station, which is set up in a specific location, and a portable station, which can be easily transported but is not necessarily used while in motion. An amateur satellite station, on the other hand, is used to communicate via amateur satellites."
+    },
+    {
+      "NO.": "16",
+      "QUESTION": "16. A radio station in the amateur service installed at specified fixed location and operated to communicate with an amateur mobile station, amateur portable station or another amateur fixed radio station is an",
+      "CHOICE A": "Amateur Radio Installation",
+      "CHOICE B": "Amateur Radio Station",
+      "CHOICE C": "Amateur Fixed Radio Service",
+      "ANSWER": "Amateur Fixed Radio Station",
+      "FEED-BACK": "Feedback: \nAn amateur fixed radio station is a radio station in the amateur service that is installed at a specified fixed location and operated to communicate with an amateur mobile station, amateur portable station, or another amateur fixed radio station. This type of station is not meant to be moved and is intended for communication within the amateur radio community."
+    },
+    {
+      "NO.": "17",
+      "QUESTION": "17. What is the maximum number of letters in the suffix of a call sign does NTC issue?",
+      "CHOICE A": "2",
+      "CHOICE B": "4",
+      "CHOICE C": "5",
+      "ANSWER": "3",
+      "FEED-BACK": "Feedback: \rThe correct answer is 3 because a suffix is the last part of a call sign, typically consisting of one or two letters. Therefore, the maximum number of letters in the suffix would be 3."
+    },
+    {
+      "NO.": "18",
+      "QUESTION": "18. Who is the Class A amateur duly appointed by the board of a club or association to supervise and control the proper use and operation of the fixed station of that association or club?",
+      "CHOICE A": "Controller",
+      "CHOICE B": "Supervisor",
+      "CHOICE C": "Technician",
+      "ANSWER": "Trustee",
+      "FEED-BACK": "Feedback: \rA trustee is a Class A amateur who is appointed by the board of a club or association to supervise and control the proper use and operation of the fixed station of that association or club. The trustee is responsible for ensuring that the station is used in accordance with regulations and guidelines, and for maintaining the station's equipment and infrastructure. They have the authority to make decisions regarding the station's operation and can enforce rules and policies to ensure its proper functioning."
+    },
+    {
+      "NO.": "19",
+      "QUESTION": "19. An amateur radio association should have how many members to qualify for accreditation by the NTC",
+      "CHOICE A": "15",
+      "CHOICE B": "30",
+      "CHOICE C": "50",
+      "ANSWER": "25",
+      "FEED-BACK": "Feedback: \rAn amateur radio association should have at least 25 members to qualify for accreditation by the NTC. This number indicates that the association is active and has a sufficient number of members to effectively carry out its activities and responsibilities. It also suggests that the association has a certain level of organization and support from the amateur radio community."
+    },
+    {
+      "NO.": "20",
+      "QUESTION": "20. Camarines Norte, Catanduanes, Sorsogon belong to which Amateur Radio District?",
+      "CHOICE A": "District 3",
+      "CHOICE B": "District 5",
+      "CHOICE C": "District 6",
+      "ANSWER": "District 4",
+      "FEED-BACK": "Feedback: \rCamarines Norte, Catanduanes, and Sorsogon belong to Amateur Radio District 4."
+    },
+    {
+      "NO.": "21",
+      "QUESTION": "21. What is Act No. 3846?",
+      "CHOICE A": "Ship Radio Station Law",
+      "CHOICE B": "Broadcasting Law",
+      "CHOICE C": "Revised Amateur Radio Regulations",
+      "ANSWER": "Radio Control Law",
+      "FEED-BACK": "Feedback: \rAct No. 3846 refers to the Radio Control Law. This law governs the regulation and control of radio broadcasting in a particular jurisdiction. It outlines the rules and guidelines that broadcasters must adhere to, including licensing requirements, frequency allocation, and content restrictions. The Radio Control Law ensures that radio stations operate within the legal framework and maintain the integrity of the airwaves."
+    },
+    {
+      "NO.": "22",
+      "QUESTION": "22. In case of loss of amateur radio certificate or radio station license, what should an amateur do?",
+      "CHOICE A": "Re-apply for new one",
+      "CHOICE B": "Apply for a duplicate",
+      "CHOICE C": "None of the above",
+      "ANSWER": "Request for new one",
+      "FEED-BACK": "Feedback: \rIf an amateur radio certificate or radio station license is lost, the correct course of action would be to request a new one. This implies that the individual should reach out to the appropriate authorities or licensing agency to inform them about the loss and apply for a replacement certificate or license. The options of re-applying for a new one or applying for a duplicate essentially convey the same idea of requesting a replacement, while \"none of the above\" is incorrect as it suggests taking no action at all."
+    },
+    {
+      "NO.": "23",
+      "QUESTION": "23. What frequency range on 15-meter HF can be used by amateurs in the Philippines?",
+      "CHOICE A": "20.000-20.450 MHz",
+      "CHOICE B": "22.000-22.450 MHz",
+      "CHOICE C": "23.000-23.450 MHz",
+      "ANSWER": "21.000-21.450 MHz",
+      "FEED-BACK": "Feedback: \rAmateurs in the Philippines can use the frequency range of 21.000-21.450 MHz on the 15-meter HF band."
+    },
+    {
+      "NO.": "24",
+      "QUESTION": "24. For every year that an amateur license has expired and filed for renewal at NTC , a surcharge equivalent to _____ shall be charged in addition to the regular annual license fee?",
+      "CHOICE A": "300%",
+      "CHOICE B": "200%",
+      "CHOICE C": "50%",
+      "ANSWER": "100%",
+      "FEED-BACK": "Feedback: \rFor every year that an amateur license has expired and filed for renewal at NTC, a surcharge equivalent to 100% shall be charged in addition to the regular annual license fee. This means that the surcharge amount will be equal to the regular annual license fee, effectively doubling the fee for each year of expired license."
+    },
+    {
+      "NO.": "25",
+      "QUESTION": "25. To facilitate the reception of distress calls, all transmissions on 145.000 MHz shall be kept to a minimum and shall not exceed",
+      "CHOICE A": "Five minutes",
+      "CHOICE B": "Three minutes",
+      "CHOICE C": "Five hours",
+      "ANSWER": "One minute",
+      "FEED-BACK": "Feedback: \rTo ensure that distress calls can be received effectively, it is necessary to limit the duration of transmissions on the designated frequency. By keeping transmissions to a minimum and not exceeding one minute, it allows for efficient communication and prevents unnecessary congestion on the channel. This allows distress calls to be promptly received and addressed, ensuring the safety and well-being of those in need."
+    },
+    {
+      "NO.": "26",
+      "QUESTION": "26. The NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines; Provided the applicant shall submit the following requirements except",
+      "CHOICE A": "Any proof that his/her country provides the same privilege with Filipino amateurs.",
+      "CHOICE B": "Endorsement from recognized national organization",
+      "CHOICE C": "Copy of valid Amateur Radio Operator Certificate issued by the country of citizenship",
+      "ANSWER": "Employment Certificate",
+      "FEED-BACK": "Feedback: \rThe NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines. The requirements that the applicant needs to submit include any proof that his/her country provides the same privilege with Filipino amateurs, an endorsement from a recognized national organization, and a copy of a valid Amateur Radio Operator Certificate issued by the country of citizenship. However, an employment certificate is not required as one of the submission requirements."
+    },
+    {
+      "NO.": "27",
+      "QUESTION": "27. Refers to a certificate or written authority to operate amateur radio, issued to a qualified person who has passed an appropriate amateur examination, for the period specified.",
+      "CHOICE A": "Amateur Radio Station License (ARSL)",
+      "CHOICE B": "Extra Class Certificate",
+      "CHOICE C": "Trustee Certificate",
+      "ANSWER": "Radio Amateur Operator Certificate (RAOC)",
+      "FEED-BACK": "Feedback: \rThe correct answer is Radio Amateur Operator Certificate (RAOC). This certificate is issued to a qualified person who has passed an appropriate amateur examination and grants them the authority to operate amateur radio. The certificate is valid for a specific period of time and serves as a written proof of their qualification. The other options mentioned in the question, such as Trustee Certificate, Amateur Radio Station License (ARSL), and Extra Class Certificate, do not accurately describe the certificate mentioned in the explanation."
+    },
+    {
+      "NO.": "28",
+      "QUESTION": "28. NRFAT stands for",
+      "CHOICE A": "National Radio Frequency And Telecommunications",
+      "CHOICE B": "National Radio Frequency And Telegraphy",
+      "CHOICE C": "National Radio Frequency And Telephony",
+      "ANSWER": "National Radio Frequency Allocation Table",
+      "FEED-BACK": "Feedback: \rNRFAT stands for National Radio Frequency Allocation Table. This is a table that outlines the allocation of radio frequencies for various purposes such as broadcasting, telecommunications, and other wireless communication systems. It provides a comprehensive overview of how different frequency bands are assigned and regulated by national regulatory authorities. This table is important for ensuring efficient and coordinated use of radio spectrum, avoiding interference between different services, and promoting effective communication systems."
+    },
+    {
+      "NO.": "29",
+      "QUESTION": "29. Amateur Class \"C\" licensee is authorized to operate a HF stations with an output power not to exceed",
+      "CHOICE A": "150 watts on CW",
+      "CHOICE B": "200 watts on CW",
+      "CHOICE C": "100 watts on CW",
+      "ANSWER": "500 watts on CW",
+      "FEED-BACK": "Feedback: \rThe correct answer is 500 watts on CW. An Amateur Class \"C\" licensee is authorized to operate a HF station with an output power not to exceed 500 watts on CW. This means that they can transmit with a maximum power of 500 watts when using continuous wave (CW) mode."
+    },
+    {
+      "NO.": "30",
+      "QUESTION": "30. What is not included in the frequency bands for Amateur Radio Service?",
+      "CHOICE A": "144.3- 145.5 MHz",
+      "CHOICE B": "14.1- 14.2 MHz",
+      "CHOICE C": "3.3- 3.5 MHz",
+      "ANSWER": "7.2 - 7.3 MHz",
+      "FEED-BACK": "Feedback: \nThe frequency band 7.2 , 7.3 MHz is not included in the Amateur Radio Service."
+    },
+    {
+      "NO.": "31",
+      "QUESTION": "31. What is the combination of letters and numbers to identify a radio station known as?",
+      "CHOICE A": "Call Tag",
+      "CHOICE B": "Call name",
+      "CHOICE C": "Call ID",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rA combination of letters and numbers used to identify a radio station is known as a call sign. Call signs are unique to each station and are used for identification purposes in radio communications. They are usually assigned by regulatory authorities and are an important part of the station's branding and identification."
+    },
+    {
+      "NO.": "32",
+      "QUESTION": "32. The NTC Commissioner who signed the Revised Amateur Radio Regulations (MEMORANDUM CIRCULAR NO. 03-08-2012) is",
+      "CHOICE A": "Ruel V. Canobas",
+      "CHOICE B": "Abraham R. Abesamis",
+      "CHOICE C": "Ronald O. Solis",
+      "ANSWER": "Gamaliel A. Cordoba",
+      "FEED-BACK": "Feedback: \rGamaliel A. Cordoba is the correct answer because he is the NTC Commissioner who signed the Revised Amateur Radio Regulations (MEMORANDUM CIRCULAR NO. 03-08-2012)."
+    },
+    {
+      "NO.": "33",
+      "QUESTION": "33. Where should the amateur Radio Station License be placed in the radio station?",
+      "CHOICE A": "Posted in a front door",
+      "CHOICE B": "Keep it for further inspection",
+      "CHOICE C": "Posted on a backyard",
+      "ANSWER": "Posted in a conspicuous place",
+      "FEED-BACK": "Feedback: \nThe amateur Radio Station License should be posted in a conspicuous place in the radio station. This means that it should be displayed prominently and clearly visible to anyone entering the station. This ensures that the license is easily accessible for inspection and also serves as a way to demonstrate compliance with regulations. Placing the license in a conspicuous place helps to maintain transparency and accountability in operating the radio station."
+    },
+    {
+      "NO.": "34",
+      "QUESTION": "34. What should an amateur do upon knowing that his station is causing harmful interference to the operation of any existing station?",
+      "CHOICE A": "Increase the power",
+      "CHOICE B": "Ignore the other user",
+      "CHOICE C": "Continue using it",
+      "ANSWER": "Cease operation immediately",
+      "FEED-BACK": "Feedback: \rUpon realizing that his station is causing harmful interference to the operation of an existing station, an amateur should cease operation immediately. This is the most responsible and ethical action to take in order to rectify the situation and prevent further disruption or damage. Continuing to use the station or ignoring the other user would only exacerbate the interference and potentially cause harm to the existing station. Increasing the power would also be inappropriate as it would only intensify the interference."
+    },
+    {
+      "NO.": "35",
+      "QUESTION": "35. Portable operation must not exceed beyond _______ in any other area without obtaining a specific authority for continued operation and if the operation will exceed four (4) months continuously in that location, a modification of the station license must be applied for.",
+      "CHOICE A": "3 months",
+      "CHOICE B": "2 months",
+      "CHOICE C": "2 1/2 months",
+      "ANSWER": "1 month",
+      "FEED-BACK": "Feedback: \rPortable operation must not exceed beyond 1 month in any other area without obtaining a specific authority for continued operation. If the operation will exceed four (4) months continuously in that location, a modification of the station license must be applied for."
+    },
+    {
+      "NO.": "36",
+      "QUESTION": "36. To secure a Class B amateur license, a registered Electronics and Communications Engineer shall be required to pass the examination for what element?",
+      "CHOICE A": "Element IV",
+      "CHOICE B": "Element I",
+      "CHOICE C": "Element IV",
+      "ANSWER": "Element II",
+      "FEED-BACK": "Feedback: \rTo secure a Class B amateur license, a registered Electronics and Communications Engineer shall be required to pass the examination for Element II. This means that in order to obtain the license, the engineer must demonstrate knowledge and proficiency in the topics covered in Element II."
+    },
+    {
+      "NO.": "37",
+      "QUESTION": "37. Which of the following is a valid call sign for Amateur in the Philippines?",
+      "CHOICE A": "KL2KAA",
+      "CHOICE B": "DW2H",
+      "CHOICE C": "DU9LUDR",
+      "ANSWER": "DY1AAD",
+      "FEED-BACK": "Feedback: \nvalid amateur call sign starts with the prefixes: DY, DW, DV, DU, 4F, DX, DZ; followed by the District No.: 1, 2, 3, 4, 5, 6, 7, 8, 9; then a minimum of 2 letters and a maximum of 3 letters. eg. 4F1KJA, DU1EV, DX1PAR."
+    },
+    {
+      "NO.": "38",
+      "QUESTION": "38. What document is issued by NTC authorizing possession of a radio transmitter or receiver?",
+      "CHOICE A": "Permit to Purchase",
+      "CHOICE B": "Permit to Operate",
+      "CHOICE C": "Permit to Carry",
+      "ANSWER": "Permit to Possess",
+      "FEED-BACK": "Feedback: \rA Permit to Possess is a document issued by NTC (National Telecommunications Commission) that authorizes an individual or organization to possess a radio transmitter or receiver. This permit grants permission to legally own and use such devices and ensures compliance with regulations set by the NTC. It is required to demonstrate that the possession of the radio transmitter or receiver is authorized and legitimate."
+    },
+    {
+      "NO.": "39",
+      "QUESTION": "39. The speed requirement for an examinee for Class D code test is",
+      "CHOICE A": "8 WPM",
+      "CHOICE B": "10 WPM",
+      "CHOICE C": "5 WPM",
+      "ANSWER": "None of the above",
+      "FEED-BACK": ""
+    },
+    {
+      "NO.": "40",
+      "QUESTION": "40. An amateur organization, club, society, organized under Philippine Laws and having a minimum membership of ___________ duly licensed amateur radio operator may be accredited by NTC and granted permission to operate a club station.",
+      "CHOICE A": "50",
+      "CHOICE B": "15",
+      "CHOICE C": "100",
+      "ANSWER": "25",
+      "FEED-BACK": "Feedback: \rAn amateur organization, club, society, organized under Philippine Laws and having a minimum membership of 25 duly licensed amateur radio operators may be accredited by NTC and granted permission to operate a club station."
+    },
+    {
+      "NO.": "41",
+      "QUESTION": "41. All amateurs shall observe the following rules except",
+      "CHOICE A": "Transmission must be in plain language of either English, Filipino or any of the Philippine dialects. Q codes may be used in voice communication.",
+      "CHOICE B": "The call sign(s) of a licensee shall be displayed conspicuously at the authorized location of the station or on the equipment itself if it is a portable station.",
+      "CHOICE C": "The amateur shall operate within the privileges allowed in the station license granted to him.",
+      "ANSWER": "All transmissions with false or misleading identification are allowed.",
+      "FEED-BACK": "Feedback: \rAll transmissions with false or misleading identification are prohibited."
+    },
+    {
+      "NO.": "42",
+      "QUESTION": "42. After how many years may an expired license be renewed; subject to the payment of fees and surcharges and the assignment of a different callsign from that of the former license but without a need for attending seminar on current Radio Laws and Radio Ethics with the National Amateur Radio Organization.",
+      "CHOICE A": "More than 5 years but less than 8 years",
+      "CHOICE B": "More than 2 years but less than 10 years",
+      "CHOICE C": "More than 5 years but less than 10 years",
+      "ANSWER": "More than 2 years but less than 5 years",
+      "FEED-BACK": "Feedback: \rAn expired license may be renewed after more than 2 years but less than 5 years, subject to the payment of fees and surcharges and the assignment of a different callsign from that of the former license. There is no need to attend a seminar on current Radio Laws and Radio Ethics with the National Amateur Radio Organization."
+    },
+    {
+      "NO.": "43",
+      "QUESTION": "43. Simultaneous transmission of sound and picture in amateur TV on all frequency above ____ is allowed by NTC?",
+      "CHOICE A": "430 MHz",
+      "CHOICE B": "144 MHz",
+      "CHOICE C": "20 MHz",
+      "ANSWER": "50 MHz",
+      "FEED-BACK": "Feedback: \rThe correct answer is 50 MHz. The National Telecommunications Commission (NTC) allows simultaneous transmission of sound and picture in amateur TV on all frequencies above 50 MHz. This means that amateur TV operators can transmit both audio and video signals on frequencies higher than 50 MHz without any restrictions imposed by the NTC."
+    },
+    {
+      "NO.": "44",
+      "QUESTION": "44. What frequency range on 40-meter HF can be used by amateurs in the Philippines?",
+      "CHOICE A": "6.800-7.000 MHz",
+      "CHOICE B": "7.300-7.600 MHz",
+      "CHOICE C": "7.800-8.000 MHz",
+      "ANSWER": "7.000-7.200 MHz",
+      "FEED-BACK": "Feedback: \rAmateurs in the Philippines can use the frequency range of 7.000-7.200 MHz on the 40-meter HF band. This frequency range is specifically allocated for amateur radio use in the Philippines, allowing amateur operators to communicate within this range."
+    },
+    {
+      "NO.": "45",
+      "QUESTION": "45. The NTC shall issue new or renewal licenses or certificates to qualified applicants who have submitted the appropriate application form which shall be valid for a minimum of ______ with the expiration date falling on the licensee's birth date.",
+      "CHOICE A": "5 years",
+      "CHOICE B": "3 years",
+      "CHOICE C": "2 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC issues licenses or certificates that are valid for a minimum of 1 year. The expiration date of the license or certificate is set to fall on the licensee's birth date. This ensures that the licensee's license or certificate is valid for a full year and aligns with their personal birth date."
+    },
+    {
+      "NO.": "46",
+      "QUESTION": "46. The Class C Amateur Examination shall cover",
+      "CHOICE A": "Elements I and II",
+      "CHOICE B": "Elements V, VI, and VII",
+      "CHOICE C": "Elements VIII, IX, and X",
+      "ANSWER": "Elements II, III, and IV",
+      "FEED-BACK": "Feedback: \rThe Class C Amateur Examination will cover Elements II, III, and IV. This means that the exam will focus on these specific elements and test the knowledge and understanding of the topics included in these elements."
+    },
+    {
+      "NO.": "47",
+      "QUESTION": "47. _________ in the amateur mobile service which has knowledge of a distress traffic and which cannot itself assist the station in distress is forbidden to transmit on the frequency in which the distress traffic is taking place, until such station receives the message indicating that normal working transmissions may be resumed.",
+      "CHOICE A": "Class B station",
+      "CHOICE B": "Class C station",
+      "CHOICE C": "Class D station",
+      "ANSWER": "Any station",
+      "FEED-BACK": "Feedback: \rAny station in the amateur mobile service that has knowledge of a distress traffic and cannot assist the station in distress is forbidden to transmit on the frequency where the distress traffic is occurring. This restriction remains in place until the station receives a message indicating that normal working transmissions can resume."
+    },
+    {
+      "NO.": "48",
+      "QUESTION": "48. What element shall be required from a holder of a valid 1st /or 2nd class commercial radiotelegraph operator certificate to pass to secure a Class B amateur license?",
+      "CHOICE A": "Element III",
+      "CHOICE B": "Element I & II",
+      "CHOICE C": "Element IV",
+      "ANSWER": "Element II",
+      "FEED-BACK": "Feedback: \rTo secure a Class B amateur license, a holder of a valid 1st/2nd class commercial radiotelegraph operator certificate will be required to pass Element II."
+    },
+    {
+      "NO.": "49",
+      "QUESTION": "49. A holder of an ECE license or of first class radio telephone/radio telegraph operator certificate is qualified to hold",
+      "CHOICE A": "Class A",
+      "CHOICE B": "Class C",
+      "CHOICE C": "Class D amateur certificate/license",
+      "ANSWER": "Class B",
+      "FEED-BACK": "Feedback: \rA holder of an ECE license or a first class radio telephone/radio telegraph operator certificate is qualified to hold a Class B amateur certificate/license. This means that they have the necessary qualifications and knowledge to operate amateur radio equipment at the Class B level."
+    },
+    {
+      "NO.": "50",
+      "QUESTION": "50. How long should a radio logbook with distress traffic be kept?",
+      "CHOICE A": "2 years",
+      "CHOICE B": "15 years",
+      "CHOICE C": "10 years",
+      "ANSWER": "5 years",
+      "FEED-BACK": "Feedback: \rA radio logbook with distress traffic should be kept for 5 years. This is because distress traffic is important for safety and emergency purposes, and it may be needed for reference or investigation during this period. Keeping the logbook for 5 years ensures that the information is available if needed, but it doesn't need to be retained indefinitely, as it may become outdated or less relevant over time."
+    },
+    {
+      "NO.": "51",
+      "QUESTION": "51. How should frequency bands allocated to a particular class of amateurs be used by duly authorized amateurs?",
+      "CHOICE A": "Disaster Preparedness",
+      "CHOICE B": "Community Service",
+      "CHOICE C": "Communications Aid",
+      "ANSWER": "Non-interference basis",
+      "FEED-BACK": "Feedback: \rThe frequency bands allocated to a particular class of amateurs should be used by duly authorized amateurs on a non-interference basis. This means that they should use the allocated frequencies without causing any interference to other users. They should respect the rights of other users and ensure that their communications do not disrupt or hinder the communications of others. This ensures that all users can effectively and efficiently use the allocated frequency bands without any disruptions or conflicts."
+    },
+    {
+      "NO.": "52",
+      "QUESTION": "52. What element shall be required from a holder of a valid 1st /or 2nd class commercial radiotelegraph operator certificate to pass to secure a Class B amateur license?",
+      "CHOICE A": "Element III",
+      "CHOICE B": "Element IV",
+      "CHOICE C": "Element I & II",
+      "ANSWER": "Element II",
+      "FEED-BACK": "Feedback: \nTo secure a Class B amateur license, a holder of a valid 1st /or 2nd class commercial radiotelegraph operator certificate would need to pass Element II. This suggests that Element II covers the necessary knowledge and skills required for operating a Class B amateur radio."
+    },
+    {
+      "NO.": "53",
+      "QUESTION": "53. The frequency bands that shall be allocated to the different classes of radio amateurs shall be determined by the ________.",
+      "CHOICE A": "IARU",
+      "CHOICE B": "Amateur Radio Club",
+      "CHOICE C": "PARA",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe correct answer is NTC. The NTC, or National Telecommunications Commission, is responsible for determining the frequency bands that will be allocated to different classes of radio amateurs. They regulate and manage the allocation of radio frequencies in order to ensure efficient and effective use of the spectrum."
+    },
+    {
+      "NO.": "54",
+      "QUESTION": "54. An amateur with a valid ARSL.",
+      "CHOICE A": "General Class License",
+      "CHOICE B": "Trustee",
+      "CHOICE C": "Technician Class License",
+      "ANSWER": "Radio Amateur Licensee (RAL)",
+      "FEED-BACK": "Feedback: \rThe correct answer is Radio Amateur Licensee (RAL). This is because an amateur with a valid ARSL refers to someone who has a Radio Amateur License. The other options, Trustee, General Class License, and Technician Class License, do not specifically indicate that the individual has a Radio Amateur License. Therefore, the most appropriate answer is Radio Amateur Licensee (RAL)."
+    },
+    {
+      "NO.": "55",
+      "QUESTION": "55. A radio station in the amateur service installed on board a vehicle or vessel and intended to be used while in motion or during halts at unspecified points is an",
+      "CHOICE A": "Amateur Radio Station",
+      "CHOICE B": "Amateur Movable Station",
+      "CHOICE C": "Amateur Portable Station",
+      "ANSWER": "Amateur Mobile Station",
+      "FEED-BACK": "Feedback: \rAn amateur mobile station refers to a radio station in the amateur service that is installed on a vehicle or vessel and can be used while in motion or during halts at unspecified points. This type of station is designed to be easily movable and can be used in different locations as the vehicle or vessel travels. It allows amateur radio operators to communicate while on the move, making it convenient for activities such as emergency communications, contests, or simply staying connected with other amateur radio operators while traveling."
+    },
+    {
+      "NO.": "56",
+      "QUESTION": "56. Northern Mindanao belongs to which Amateur Radio District?",
+      "CHOICE A": "District 10",
+      "CHOICE B": "District 7",
+      "CHOICE C": "District 8",
+      "ANSWER": "District 9",
+      "FEED-BACK": "Feedback: \rNorthern Mindanao belongs to Amateur Radio District 9."
+    },
+    {
+      "NO.": "57",
+      "QUESTION": "57. All amateurs shall observe the following rules except",
+      "CHOICE A": "The licensee of a portable or mobile station may also communicate with his own fixed station provided that said fixed station is manned by another duly licensed amateur and identified with the use of the authorized call sign of that fixed station",
+      "CHOICE B": "The power output of the equipment energizing the antenna or radiating system of an amateur radio station shall not exceed the limit prescribed for the particular class of station.",
+      "CHOICE C": "A duly licensed amateur, however, may install and operate the mobile radio equipment of his station on any vehicle or vessel owned or controlled by the licensee and the authorized call sign is correctly shown.",
+      "ANSWER": "The licensee shall make available the portable or mobile equipment of the station for inspection upon reasonable request of the NTC authorized representative.",
+      "FEED-BACK": "Feedback: \rThe licensee shall make available the portable or mobile equipment of the station for inspection upon reasonable request of the NTC authorized representative."
+    },
+    {
+      "NO.": "58",
+      "QUESTION": "58. Which of the the following frequency bands is not allocated by the NTC to the amateur Radio Service in the Philippines.",
+      "CHOICE A": "430.000 - 440.000 MHz",
+      "CHOICE B": "144.000 - 146.000 MHz",
+      "CHOICE C": "7.000 - 7.200 MHz",
+      "ANSWER": "54.000 - 60.000 MHz",
+      "FEED-BACK": "Feedback: \r54.000 , 60.000 MHz is allocated for TV Broadcasting"
+    },
+    {
+      "NO.": "59",
+      "QUESTION": "59. The NTC shall issue new or renewal licenses or certificates to qualified applicants who have submitted the appropriate application form which shall be valid for a minimum of ______ with the expiration date falling on the licensee's birth date.",
+      "CHOICE A": "2 years",
+      "CHOICE B": "3 years",
+      "CHOICE C": "5 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC issues new or renewal licenses or certificates to qualified applicants who have submitted the appropriate application form. These licenses or certificates are valid for a minimum of 1 year, with the expiration date falling on the licensee's birth date. This means that the license or certificate needs to be renewed every year on the licensee's birth date."
+    },
+    {
+      "NO.": "60",
+      "QUESTION": "60. Who shall be allowed to sell and import amateur transceivers?",
+      "CHOICE A": "Only PARA accredited radio dealers",
+      "CHOICE B": "Telecom Companies",
+      "CHOICE C": "Only DOTC accredited radio dealers",
+      "ANSWER": "Only NTC accredited radio dealers",
+      "FEED-BACK": "Feedback: \rOnly NTC accredited radio dealers shall be allowed to sell and import amateur transceivers. This means that these dealers have met the necessary requirements and standards set by the National Telecommunications Commission (NTC) to engage in the sale and importation of amateur transceivers. This ensures that the dealers are knowledgeable and authorized to handle and distribute these devices, promoting safety and compliance with regulations."
+    },
+    {
+      "NO.": "61",
+      "QUESTION": "61. Which of the following Amateur Examination subjects deals with Morse Code?",
+      "CHOICE A": "Element X",
+      "CHOICE B": "Element II",
+      "CHOICE C": "Element V",
+      "ANSWER": "Element I",
+      "FEED-BACK": "Feedback: \nElement I deals with Morse Code in the Amateur Examination subjects."
+    },
+    {
+      "NO.": "62",
+      "QUESTION": "62. An amateur shall not transmit messages or signals containing",
+      "CHOICE A": "Coded messages",
+      "CHOICE B": "\"Q\" codes",
+      "CHOICE C": "None of the above",
+      "ANSWER": "Profane or indecent words or language",
+      "FEED-BACK": "Feedback: \rAn amateur is not allowed to transmit messages or signals that contain profane or indecent words or language. This is because amateur radio operators are expected to adhere to a code of conduct and maintain a level of professionalism in their communications. Transmitting such content goes against the principles of amateur radio and can result in penalties or loss of privileges. Coded messages and \"Q\" codes are commonly used in amateur radio communications and are not prohibited. Therefore, the correct answer is profane or indecent words or language."
+    },
+    {
+      "NO.": "63",
+      "QUESTION": "63. ITU stands for",
+      "CHOICE A": "International Telephony Union",
+      "CHOICE B": "International Telegraphy Union",
+      "CHOICE C": "International Trade Union",
+      "ANSWER": "International Telecommunications Union",
+      "FEED-BACK": "Feedback: \rITU stands for International Telecommunications Union. This organization is responsible for coordinating and standardizing global telecommunications networks and services. It plays a crucial role in promoting international cooperation and collaboration in the field of telecommunications. The other options mentioned in the question, such as International Telegraphy Union, International Telephony Union, and International Trade Union, are not correct as they do not accurately represent the purpose and scope of ITU."
+    },
+    {
+      "NO.": "64",
+      "QUESTION": "64. What is the prefix of the Call Sign used for the Amateur Club Station, Dxpedition and special events?",
+      "CHOICE A": "4F",
+      "CHOICE B": "DW",
+      "CHOICE C": "DV",
+      "ANSWER": "DZ",
+      "FEED-BACK": "Feedback: \rClass A (DU or 4F); Class B (DV); Class C (DW); Class D (DY); Club Station, Dxpedition and special events (DX or DZ)"
+    },
+    {
+      "NO.": "65",
+      "QUESTION": "65. Refers to a reasonably complete and sufficient combination of distinct radio equipment intended for and capable of being used either for transmission or reception of radio signals or both.",
+      "CHOICE A": "Radio Room",
+      "CHOICE B": "Radio Transmitter",
+      "CHOICE C": "Radio Broadcast",
+      "ANSWER": "Radio Apparatus",
+      "FEED-BACK": "Feedback: \rThe term \"radio apparatus\" refers to a combination of distinct radio equipment that is capable of transmitting or receiving radio signals. This can include various devices such as radio transmitters, receivers, antennas, and other related equipment. The term encompasses a wide range of equipment used in radio communication and broadcasting."
+    },
+    {
+      "NO.": "66",
+      "QUESTION": "66. Any transmission, emission, or reception of signs, signal, writings, images and sounds or intelligence of any nature by wire, radio, optical or other electromagnetic systems.",
+      "CHOICE A": "Radiocommunications",
+      "CHOICE B": "Amateur Communications",
+      "CHOICE C": "Wireless Communications",
+      "ANSWER": "Telecommunications",
+      "FEED-BACK": "Feedback: \rTelecommunications refers to the transmission, emission, or reception of signs, signals, writings, images, and sounds or intelligence of any nature by wire, radio, optical, or other electromagnetic systems. This includes various forms of communication such as telephone networks, internet communication, and broadcasting. The term encompasses both wired and wireless communication methods and is a broad category that covers all forms of electronic communication. Therefore, telecommunications is the correct answer as it encompasses the entire range of communication methods mentioned in the question."
+    },
+    {
+      "NO.": "67",
+      "QUESTION": "67. An amateur radio station log book with a distress traffic entry should be kept for a period of",
+      "CHOICE A": "1 year",
+      "CHOICE B": "4 year",
+      "CHOICE C": "5 year",
+      "ANSWER": "2 year",
+      "FEED-BACK": "Feedback: \rAn amateur radio station log book with a distress traffic entry should be kept for a period of 2 years. This is because distress traffic is considered to be of utmost importance and may be required for legal or investigative purposes. Keeping the log book for 2 years ensures that the information is readily available if needed, while also allowing for efficient record-keeping and organization."
+    },
+    {
+      "NO.": "68",
+      "QUESTION": "68. A radio communication service using space stations and earth satellites for the same purposes as those of the Amateur Radio Service.",
+      "CHOICE A": "Amateur Mobile Station",
+      "CHOICE B": "Amateur Portable Station",
+      "CHOICE C": "Amateur Fixed Station",
+      "ANSWER": "Amateur Satellite Service",
+      "FEED-BACK": "Feedback: \rThe given question is asking for a radio communication service that uses space stations and earth satellites for the same purposes as the Amateur Radio Service. The correct answer is \"Amateur Satellite Service\" because this service specifically utilizes satellites and space stations to provide communication services similar to those offered by the Amateur Radio Service."
+    },
+    {
+      "NO.": "69",
+      "QUESTION": "69. A Class “B” licensee shall be authorized to operate on HF fixed radio station with an output power not exceeding ______watts on CW?",
+      "CHOICE A": "Unlimited",
+      "CHOICE B": "1500 watts",
+      "CHOICE C": "100 watts",
+      "ANSWER": "500 watts",
+      "FEED-BACK": "Feedback: \rA Class \"B\" licensee is permitted to operate on HF fixed radio stations with an output power not exceeding 500 watts on CW. This means that they are authorized to transmit signals using Continuous Wave (CW) modulation with a maximum power output of 500 watts."
+    },
+    {
+      "NO.": "70",
+      "QUESTION": "70. To facilitate the reception of distress calls using the emergency frequency on 2 meters, transmissions should be kept to a minimum and for how long?",
+      "CHOICE A": "Not exceeding 30 seconds",
+      "CHOICE B": "Not exceeding 3 minutes",
+      "CHOICE C": "Not exceeding 2 minutes",
+      "ANSWER": "Not exceeding 1 minute",
+      "FEED-BACK": "Feedback: \rTo ensure efficient reception of distress calls on the emergency frequency, transmissions should be kept to a minimum. This means that the duration of each transmission should be limited. The correct answer is \"Not exceeding 1 minute.\" This means that distress calls should be concise and to the point, lasting no longer than 1 minute to avoid clogging the emergency frequency and allow for other important communications to take place."
+    },
+    {
+      "NO.": "71",
+      "QUESTION": "71. What is the prefix used for the Class A Amateur Call sign?",
+      "CHOICE A": "DV",
+      "CHOICE B": "DX",
+      "CHOICE C": "DZ",
+      "ANSWER": "DU or 4F",
+      "FEED-BACK": "Feedback: \rClass A (DU or 4F); Class B (DV); Class C (DW); Class D (DY); Club Station, Dxpedition and special events (DX or DZ)"
+    },
+    {
+      "NO.": "72",
+      "QUESTION": "72. Ilocos belongs to which Amateur Radio District?",
+      "CHOICE A": "District 4",
+      "CHOICE B": "District 1",
+      "CHOICE C": "District 3",
+      "ANSWER": "District 2",
+      "FEED-BACK": "Feedback: \rIlocos belongs to Amateur Radio District 2."
+    },
+    {
+      "NO.": "73",
+      "QUESTION": "73. It is known as the Revised Amateur Radio Regulations.",
+      "CHOICE A": "Act No. 3846",
+      "CHOICE B": "Commonwealth Act No. 571",
+      "CHOICE C": "Commonwealth Act No. 546",
+      "ANSWER": "MC No. 03-08-2012",
+      "FEED-BACK": ""
+    },
+    {
+      "NO.": "74",
+      "QUESTION": "74. This channel is used only for emergency communications and general calling for radio telephony",
+      "CHOICE A": "145+/-50KHz",
+      "CHOICE B": "145+/-75KHz",
+      "CHOICE C": "None of the above",
+      "ANSWER": "145+/-25KHz",
+      "FEED-BACK": "Feedback: \rThis answer is correct because it states that the channel is used for emergency communications and general calling for radio telephony. Additionally, it specifies that the frequency range is 145+/-25KHz, which indicates the range within which the channel operates. The other frequency ranges mentioned in the options (145+/-75KHz and 145+/-50KHz) are not accurate according to the given information. Therefore, the correct answer is 145+/-25KHz."
+    },
+    {
+      "NO.": "75",
+      "QUESTION": "75. A Class “D” licensee is authorized to operate a VHF fixed radio station with an output power not exceeding 50 watts and _________ on VHF mobile or portable.",
+      "CHOICE A": "5 watts",
+      "CHOICE B": "20 watts",
+      "CHOICE C": "15 watts",
+      "ANSWER": "10 watts",
+      "FEED-BACK": "Feedback: \rA Class “D” licensee shall be authorized to operate a VHF fixed radio station with an output power not exceeding 50 watts and 10 watts on VHF mobile or portable."
+    },
+    {
+      "NO.": "76",
+      "QUESTION": "76. In radio teletype transmission, the frequency shift shall not exceed?",
+      "CHOICE A": "85Hz",
+      "CHOICE B": "1000Hz",
+      "CHOICE C": "10Hz",
+      "ANSWER": "850Hz",
+      "FEED-BACK": "Feedback: \rIn radio teletype transmission, the frequency shift refers to the change in frequency between the mark and space signals. The given correct answer of 850Hz suggests that the maximum allowable frequency shift in radio teletype transmission should not exceed 850Hz. This means that the mark and space signals should have a maximum frequency difference of 850Hz to ensure accurate and reliable transmission of the teletype signals."
+    },
+    {
+      "NO.": "77",
+      "QUESTION": "77. NTC stands for",
+      "CHOICE A": "National Telegraph Commission",
+      "CHOICE B": "National Telecommunications Center",
+      "CHOICE C": "National Telephony Center",
+      "ANSWER": "National Telecommunications Commission",
+      "FEED-BACK": "Feedback: \rThe correct answer is National Telecommunications Commission. NTC is an abbreviation for National Telecommunications Commission, which is a regulatory body responsible for overseeing and regulating the telecommunications industry in a particular country. They ensure fair competition, protect consumer rights, and promote the development of telecommunications infrastructure."
+    },
+    {
+      "NO.": "78",
+      "QUESTION": "78. It is defined as a reasonably complete and sufficient combination of distinct radio equipment intended for or capable of being used either for transmission or reception of radio signals or both?",
+      "CHOICE A": "Radio Broadcast",
+      "CHOICE B": "Radio Transmitter",
+      "CHOICE C": "Radio Room",
+      "ANSWER": "Radio Apparatus",
+      "FEED-BACK": "Feedback: \rRadio apparatus refers to a collection of distinct radio equipment that can be used for both transmitting and receiving radio signals. It is a comprehensive and sufficient combination of devices that enable communication through radio waves. This term encompasses various types of radio equipment, including transmitters and receivers, which are essential for transmitting and receiving radio signals."
+    },
+    {
+      "NO.": "79",
+      "QUESTION": "79. What frequency range on 15-meter HF can be used by amateurs in the Philippines?",
+      "CHOICE A": "23.000-23.450 MHz",
+      "CHOICE B": "22.000-22.450 MHz",
+      "CHOICE C": "20.000-20.450 MHz",
+      "ANSWER": "21.000-21.450 MHz",
+      "FEED-BACK": "Feedback: \rAmateurs in the Philippines can use the frequency range of 21.000-21.450 MHz on the 15-meter HF band."
+    },
+    {
+      "NO.": "80",
+      "QUESTION": "80. The sole body that exercises jurisdiction over the supervision, adjudication and control over all telecommunications services throughout the country.",
+      "CHOICE A": "IARU",
+      "CHOICE B": "DOTC",
+      "CHOICE C": "SEC",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe National Telecommunications Commission (NTC) is the correct answer because it is the sole body that exercises jurisdiction over the supervision, adjudication, and control of all telecommunications services in the country. The NTC is responsible for regulating and overseeing the telecommunications industry, ensuring fair competition, protecting consumer rights, and promoting the development of efficient and reliable telecommunications services nationwide. The DOTC (Department of Transportation and Communications), SEC (Securities and Exchange Commission), and IARU (International Amateur Radio Union) do not have the same authority and jurisdiction over telecommunications services as the NTC."
+    },
+    {
+      "NO.": "81",
+      "QUESTION": "81. What is required if a person wants to sell or transfer his transmitter or transceiver to another on a single transaction?",
+      "CHOICE A": "He must obtain a permit to sell or transfer duly notarized by a public attorney.",
+      "CHOICE B": "He must execute a power of attorney under oath.",
+      "CHOICE C": "He must obtain a license to sell or transfer from the NTC.",
+      "ANSWER": "He must obtain a permit to sell or transfer from the NTC.",
+      "FEED-BACK": "Feedback: \rTo sell or transfer a transmitter or transceiver to another person in a single transaction, the person must obtain a permit to sell or transfer from the NTC. This implies that there are regulatory requirements in place, and the NTC (National Telecommunications Commission) is responsible for granting the necessary permit. This permit ensures that the sale or transfer is done in accordance with the rules and regulations set by the NTC, ensuring proper control and monitoring of such devices."
+    },
+    {
+      "NO.": "82",
+      "QUESTION": "82. How many classes of amateurs are there in the Philippines?",
+      "CHOICE A": "5",
+      "CHOICE B": "3",
+      "CHOICE C": "6",
+      "ANSWER": "4",
+      "FEED-BACK": "Feedback: \rThere are four classes of amateurs in the Philippines."
+    },
+    {
+      "NO.": "83",
+      "QUESTION": "83. Which of the following Amateur Examination subjects deals with Morse Code?",
+      "CHOICE A": "Element II",
+      "CHOICE B": "Element X",
+      "CHOICE C": "Element V",
+      "ANSWER": "Element I",
+      "FEED-BACK": "Feedback: \rElement I deals with Morse Code."
+    },
+    {
+      "NO.": "84",
+      "QUESTION": "84. What is the amateur station so designed that it may conveniently be moved about from place to place or personally carried and be operated while in motion or during temporary halts?",
+      "CHOICE A": "Amateur Movable Station",
+      "CHOICE B": "Amateur Radio Station",
+      "CHOICE C": "Amateur Mobile Station",
+      "ANSWER": "Amateur Portable Station",
+      "FEED-BACK": "Feedback: \rAn amateur portable station is designed to be easily moved from one place to another or carried by an individual. It can be operated while in motion or during temporary halts. This type of station is ideal for amateur radio enthusiasts who want the flexibility to use their equipment in different locations or while on the go. It allows for portable operation and provides the convenience of being able to set up and use the station wherever needed."
+    },
+    {
+      "NO.": "85",
+      "QUESTION": "85. All transmission in the amateur radio service shall carry identification signals known as",
+      "CHOICE A": "Call name",
+      "CHOICE B": "Code name",
+      "CHOICE C": "Code sign",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rIn the amateur radio service, all transmissions are required to have identification signals known as \"call signs.\" Call signs are unique identifiers assigned to licensed amateur radio operators and are used to identify the sender of the transmission. These call signs help in maintaining proper communication protocols, identifying the source of the transmission, and ensuring accountability in the amateur radio community."
+    },
+    {
+      "NO.": "86",
+      "QUESTION": "86. What frequency range on 40-meter HF can be used by amateurs in the Philippines?",
+      "CHOICE A": "7.800-8.000 MHz",
+      "CHOICE B": "6.800-7.000 MHz",
+      "CHOICE C": "7.300-7.600 MHz",
+      "ANSWER": "7.000-7.200 MHz",
+      "FEED-BACK": "Feedback: \rAmateurs in the Philippines can use the frequency range of 7.000-7.200 MHz on the 40-meter HF band. This range is specifically allocated for amateur radio use in the Philippines."
+    },
+    {
+      "NO.": "87",
+      "QUESTION": "87. A Class “C” licensee is authorized to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or 200 watts PEP on single side band suppressed carrier and _______ on VHF fixed, portable or mobile station.",
+      "CHOICE A": "500 watts",
+      "CHOICE B": "1 kilowatt",
+      "CHOICE C": "2 kilowatts",
+      "ANSWER": "100 watts",
+      "FEED-BACK": "Feedback: \rA Class “C” licensee shall be authorized to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or 200 watts PEP on single side band suppressed carrier and 100 watts on VHF fixed, portable or mobile station."
+    },
+    {
+      "NO.": "88",
+      "QUESTION": "88. One or more transmitters, receivers or combination of transmitters and receivers at a location for carrying on radio communication.",
+      "CHOICE A": "Radio Apparatus",
+      "CHOICE B": "Repeater Station",
+      "CHOICE C": "Transceiver",
+      "ANSWER": "Radio Station",
+      "FEED-BACK": "Feedback: \rA radio station is a location where radio communication takes place using one or more transmitters, receivers, or a combination of both. It is a facility that broadcasts radio programs or transmits signals for communication purposes. This term accurately describes the given definition, making it the correct answer."
+    },
+    {
+      "NO.": "89",
+      "QUESTION": "89. Where should the amateur Radio Station License be placed in the radio station?",
+      "CHOICE A": "Posted in the entrance place",
+      "CHOICE B": "Posted in the gate of the place",
+      "CHOICE C": "Posted in the FB page",
+      "ANSWER": "Posted in a conspicuous place",
+      "FEED-BACK": "Feedback: \rThe amateur Radio Station License should be posted in a conspicuous place in the radio station. This means that the license should be displayed in a location where it can be easily seen and accessed by anyone entering the station. This ensures that the license is visible to visitors, employees, and authorities, and demonstrates compliance with regulations. Placing the license in a conspicuous place helps to maintain transparency and accountability for the radio station's operations."
+    },
+    {
+      "NO.": "90",
+      "QUESTION": "90. Refers to a Class “A” Amateur Radio Operator who has operated his own amateur station for at least five (5) years and has been deputized by the NTC to inspect amateur stations.",
+      "CHOICE A": "Amateur Radio Club President",
+      "CHOICE B": "Special Amateur Radio Operator",
+      "CHOICE C": "Amateur Radio Commissioner",
+      "ANSWER": "Amateur Radio Inspector",
+      "FEED-BACK": "Feedback: \rAn Amateur Radio Inspector is a Class \"A\" Amateur Radio Operator who has been operating their own amateur station for at least five years and has been authorized by the NTC (National Telecommunications Commission) to inspect amateur stations. This person has the knowledge and experience to ensure that amateur radio stations are operating within the regulations and standards set by the NTC. They play a crucial role in maintaining the integrity and proper functioning of amateur radio stations."
+    },
+    {
+      "NO.": "91",
+      "QUESTION": "91. The distress signal ________spoken three (3) times",
+      "CHOICE A": "HELP",
+      "CHOICE B": "PAN",
+      "CHOICE C": "SOS",
+      "ANSWER": "MAYDAY",
+      "FEED-BACK": "Feedback: \r\"MAYDAY\" is the correct answer because it is the internationally recognized distress signal used by pilots, mariners, and others to indicate that they are in grave and imminent danger and require immediate assistance. The word \"MAYDAY\" is spoken three times in a row to ensure clarity and to distinguish it from other radio transmissions."
+    },
+    {
+      "NO.": "92",
+      "QUESTION": "92. In the event that a candidate for Class C fails in Elements III and IV, but passes element II, he shall be eligible for a Class License in Class___?",
+      "CHOICE A": "Class A",
+      "CHOICE B": "Class B",
+      "CHOICE C": "RESTRICTED RADIO OPERATOR CERTIFICATE",
+      "ANSWER": "Class D",
+      "FEED-BACK": "Feedback: \rIf a candidate for Class C fails in Elements III and IV but passes Element II, they will be eligible for a Class D license."
+    },
+    {
+      "NO.": "93",
+      "QUESTION": "93. What do you call a radio station in the amateur service installed at specified fixed location and operated to communicate with an amateur mobile station, portable station or another amateur station?",
+      "CHOICE A": "Local Station",
+      "CHOICE B": "Base",
+      "CHOICE C": "None of the above",
+      "ANSWER": "Amateur Fixed Station",
+      "FEED-BACK": "Feedback: \rAn amateur fixed station refers to a radio station in the amateur service that is installed at a specified fixed location and used to communicate with other amateur stations, including mobile and portable stations. This term is used to differentiate it from other types of stations, such as base stations or local stations, which may have different purposes or characteristics."
+    },
+    {
+      "NO.": "94",
+      "QUESTION": "94. It is the general term applied to the use of radio waves?",
+      "CHOICE A": "Radio Technician",
+      "CHOICE B": "Radio Operation",
+      "CHOICE C": "Radiology",
+      "ANSWER": "Radio",
+      "FEED-BACK": ""
+    },
+    {
+      "NO.": "95",
+      "QUESTION": "95. Amateur Class D certificate holders are authorized to operate",
+      "CHOICE A": "UHF radio station",
+      "CHOICE B": "HF/SSB radio station",
+      "CHOICE C": "none of the above",
+      "ANSWER": "VHF radio station only",
+      "FEED-BACK": "Feedback: \rAmateur Class D certificate holders are authorized to operate VHF radio stations only. This means that they are allowed to use Very High Frequency (VHF) radio frequencies for communication. They are not authorized to operate HF/SSB or UHF radio stations."
+    },
+    {
+      "NO.": "96",
+      "QUESTION": "96. The simultaneous transmission of sound and picture (Amateur Television) on all frequencies above 50 MHz is allowed provided such operation shall be covered by a specific authorization from the",
+      "CHOICE A": "DOTC",
+      "CHOICE B": "KBP",
+      "CHOICE C": "PARA",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe correct answer is NTC. The National Telecommunications Commission (NTC) is responsible for regulating and authorizing the transmission of sound and picture on frequencies above 50 MHz for Amateur Television. They ensure that operators comply with the necessary regulations and guidelines to prevent interference and maintain the quality of transmission."
+    },
+    {
+      "NO.": "97",
+      "QUESTION": "97. Which Element is not prescribed for Class C examination?",
+      "CHOICE A": "Element IV",
+      "CHOICE B": "Element III",
+      "CHOICE C": "Element II",
+      "ANSWER": "Element I",
+      "FEED-BACK": "Feedback: \rElement I is for Class A only"
+    },
+    {
+      "NO.": "98",
+      "QUESTION": "98. Which of the following acts is a ground for suspension / revocation of license / operator certificate / temporary permit?",
+      "CHOICE A": "Not receiving, levying, or collecting a toll fee or other remuneration for a service or services performed by his station.",
+      "CHOICE B": "Posting of license in a conspicuous place in the radio station or carrying a certified copy thereof by the amateur.",
+      "CHOICE C": "Using Q codes in voice communication",
+      "ANSWER": "Intentional harmful interfering or jamming of licensed radio stations.",
+      "FEED-BACK": "Feedback: \rIntentional harmful interfering or jamming of licensed radio stations is a ground for suspension/revocation of license/operator certificate/temporary permit. This act is considered a violation of regulations and ethics in the field of radio communication. It disrupts the normal functioning of licensed radio stations and can cause interference with important communications. Therefore, any individual or operator found guilty of intentional harmful interfering or jamming may face disciplinary action, including the suspension or revocation of their license or operator certificate."
+    },
+    {
+      "NO.": "99",
+      "QUESTION": "99. Class C has limited authorization to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or _____ watts PEP on single side band suppressed carrier and 100 watts on VHF fixed, portable or mobile station",
+      "CHOICE A": "200 Watts",
+      "CHOICE B": "500 Watts",
+      "CHOICE C": "300 Watts",
+      "ANSWER": "150 Watts",
+      "FEED-BACK": "Feedback: \rClass C has limited authorization to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or 150 watts PEP on single side band suppressed carrier and 100 watts on VHF fixed, portable or mobile station."
+    },
+    {
+      "NO.": "100",
+      "QUESTION": "100. To facilitate the reception of distress calls using the emergency frequency on 2 meters, transmissions should be kept to a minimum and for how long?",
+      "CHOICE A": "Not exceeding 3 minutes",
+      "CHOICE B": "Not exceeding 30 seconds",
+      "CHOICE C": "Not exceeding 2 minutes",
+      "ANSWER": "Not exceeding 1 minute",
+      "FEED-BACK": "Feedback: \rTo ensure efficient reception of distress calls using the emergency frequency on 2 meters, transmissions should be kept to a minimum duration. Keeping transmissions to a maximum of 1 minute allows for quick and concise communication, ensuring that other distress calls can be received and addressed promptly. This time limit helps prevent congestion on the emergency frequency and allows for efficient coordination of emergency response efforts."
+    },
+    {
+      "NO.": "101",
+      "QUESTION": "101. The Class B Amateur Examination shall cover",
+      "CHOICE A": "Elements II, III, and IV",
+      "CHOICE B": "Elements VIII, IX, and X",
+      "CHOICE C": "Elements I and II",
+      "ANSWER": "Elements V, VI, and VII",
+      "FEED-BACK": "Feedback: \rThe correct answer is Elements V, VI, and VII. This means that the Class B Amateur Examination will focus on these specific elements. It is implied that the examination will not cover Elements II, III, IV, VIII, IX, and X, as they are not mentioned in the answer."
+    },
+    {
+      "NO.": "102",
+      "QUESTION": "102. The NTC may issue a special call sign called",
+      "CHOICE A": "Extra call sign",
+      "CHOICE B": "Class A call sign",
+      "CHOICE C": "Limited call sign",
+      "ANSWER": "Vanity call sign",
+      "FEED-BACK": "Feedback: \rA vanity call sign is a special call sign that is issued by the NTC. Unlike regular call signs, which are assigned based on geographical location, vanity call signs are chosen by the licensee themselves. This allows amateur radio operators to personalize their call sign and make it more unique or meaningful to them. Vanity call signs are typically requested by experienced operators who have passed certain licensing requirements and want a call sign that reflects their individuality or interests."
+    },
+    {
+      "NO.": "103",
+      "QUESTION": "103. It is defined as a radio communication service using space stations on earth satellites for the same purpose as those of the Amateur Radio Service?",
+      "CHOICE A": "Echolink",
+      "CHOICE B": "Amateur Mobile Service",
+      "CHOICE C": "Amateur Radio Service",
+      "ANSWER": "Amateur Satellite Service",
+      "FEED-BACK": "Feedback: \rThe correct answer is Amateur Satellite Service. This service refers to the use of space stations on earth satellites for radio communication. It is similar in purpose to the Amateur Radio Service, which involves non-commercial radio communication for personal use. The Amateur Satellite Service allows amateur radio operators to communicate with each other using satellites in space, expanding the range and capabilities of their radio communication."
+    },
+    {
+      "NO.": "104",
+      "QUESTION": "104. Central Luzon belongs to which Amateur Radio District?",
+      "CHOICE A": "District 5",
+      "CHOICE B": "District 2",
+      "CHOICE C": "District 1",
+      "ANSWER": "District 3",
+      "FEED-BACK": "Feedback: \rCentral Luzon belongs to District 3 because it is stated in the options that District 3 is the correct answer."
+    },
+    {
+      "NO.": "105",
+      "QUESTION": "105. The fixed amateur radio station of an association, club or society shall be licensed under the name of the",
+      "CHOICE A": "President",
+      "CHOICE B": "Founder",
+      "CHOICE C": "Manager",
+      "ANSWER": "Trustee",
+      "FEED-BACK": "Feedback: \rThe correct answer is trustee. In the context of a fixed amateur radio station, the trustee refers to the person who is responsible for the station's operation and compliance with regulations. The trustee is typically appointed or elected by the association, club, or society that owns the station. They have the authority to ensure that the station operates within the legal framework and follows the guidelines set by the regulatory authorities."
+    },
+    {
+      "NO.": "106",
+      "QUESTION": "106. It is the general term applied to the use of radio waves?",
+      "CHOICE A": "Radiology",
+      "CHOICE B": "Radio Technician",
+      "CHOICE C": "Radio Operation",
+      "ANSWER": "Radio",
+      "FEED-BACK": "Feedback: \nThe correct answer is \"Radio\" because it is the general term used to describe the use of radio waves. Radiology refers to the medical specialty that uses medical imaging techniques, such as X-rays and CT scans. A radio technician is a professional who works with radio equipment, while radio operation refers to the act of operating a radio device. Therefore, \"Radio\" is the most appropriate and general term in this context."
+    },
+    {
+      "NO.": "107",
+      "QUESTION": "107. Region V belongs to which Amateur Radio District?",
+      "CHOICE A": "District No. 5",
+      "CHOICE B": "District No. 3",
+      "CHOICE C": "District No. 6",
+      "ANSWER": "District No. 4",
+      "FEED-BACK": "Feedback: \rRegion V belongs to District No. 4."
+    },
+    {
+      "NO.": "108",
+      "QUESTION": "108. General Term applied to the use of radio wave.",
+      "CHOICE A": "Radiograph",
+      "CHOICE B": "Radio Telephony",
+      "CHOICE C": "Radio Telegraphy",
+      "ANSWER": "Radio",
+      "FEED-BACK": "Feedback: \rThe term \"radio\" is the correct answer because it is the general term used to describe the use of radio waves. Radio is a form of communication that involves the transmission and reception of electromagnetic waves in the radio frequency range. It is widely used for broadcasting, telecommunications, and wireless communication. The other options, such as radio telephony, radiograph, and radio telegraphy, are specific applications or technologies related to radio but do not encompass the general concept of radio itself."
+    },
+    {
+      "NO.": "109",
+      "QUESTION": "109. Region V belongs to which Amateur Radio District?",
+      "CHOICE A": "District No. 5",
+      "CHOICE B": "District No. 6",
+      "CHOICE C": "District No. 3",
+      "ANSWER": "District No. 4",
+      "FEED-BACK": "Feedback: \rRegion V belongs to District No. 4."
+    },
+    {
+      "NO.": "110",
+      "QUESTION": "110. No station in the amateur radio service shall be operated except in accordance with a valid permit or licensed issued by:",
+      "CHOICE A": "“ITU” International Telecommunication Union",
+      "CHOICE B": "TELecommunication OFfice “TELOF”",
+      "CHOICE C": "“ARRL” Amateur Radio Relay League",
+      "ANSWER": "National Telecommunications Commission “NTC “",
+      "FEED-BACK": "Feedback: \rThe correct answer is National Telecommunications Commission \"NTC\". In the amateur radio service, it is necessary to have a valid permit or license issued by the NTC in order to operate a station. The NTC is responsible for regulating and overseeing the telecommunications sector in the country, including the amateur radio service. They ensure that operators adhere to the rules and regulations set forth for the proper and safe operation of amateur radio stations."
+    },
+    {
+      "NO.": "111",
+      "QUESTION": "111. What rating must a candidate obtain to pass the written examination provided that a rating of not less than 50% is received for any of the prescribed elements?",
+      "CHOICE A": "75%",
+      "CHOICE B": "60%",
+      "CHOICE C": "80%",
+      "ANSWER": "70%",
+      "FEED-BACK": "Feedback: \rTo pass the written examination, a candidate must obtain a rating of at least 50% in any of the prescribed elements. This means that if the candidate scores below 50% in any element, they will fail the examination. Therefore, the candidate must aim for a rating higher than 50% in order to pass. Among the given options, the only rating higher than 50% is 70%, so the candidate must obtain a rating of 70% to pass the written examination."
+    },
+    {
+      "NO.": "112",
+      "QUESTION": "112. Refers to telecommunications by means of radio waves.",
+      "CHOICE A": "Satellite",
+      "CHOICE B": "Repeater",
+      "CHOICE C": "Amateur",
+      "ANSWER": "Radiocommunication",
+      "FEED-BACK": "Feedback: \rRadiocommunication refers to the use of radio waves for telecommunication purposes. It involves the transmission and reception of signals through radio waves, enabling communication over long distances without the need for physical connections. This can include various forms of communication such as broadcasting, two-way radio communication, and wireless telephony. Radiocommunication plays a crucial role in modern telecommunications systems, allowing for efficient and widespread communication across different locations and devices."
+    },
+    {
+      "NO.": "113",
+      "QUESTION": "113. The _______ shall maintain an updated database of amateur radio station licensees and radio amateur operators. This database shall be made available to the public and shall only reveal the name, call sign(s), amateur radio class and license expiration date of the club station license, ARSL or RAOC.",
+      "CHOICE A": "PARA",
+      "CHOICE B": "IARU",
+      "CHOICE C": "Amateur Radio Club",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe NTC shall maintain an updated database of amateur radio station licensees and radio amateur operators. This database shall be made available to the public and shall only reveal the name, call sign(s), amateur radio class and license expiration date of the club station license, ARSL or RAOC."
+    },
+    {
+      "NO.": "114",
+      "QUESTION": "114. When is any person permitted to transmit by voice while operating the amateur station of a licensee?",
+      "CHOICE A": "When a person has undergone training in radio operation",
+      "CHOICE B": "When the licensee is authorized by the radio club",
+      "CHOICE C": "When a person sees the need esp in emergency situations",
+      "ANSWER": "When the licensee controls directly the entire operation in accordance with proper amateur practice",
+      "FEED-BACK": "Feedback: \rWhen operating an amateur station, a person is permitted to transmit by voice when the licensee controls directly the entire operation in accordance with proper amateur practice. This means that the person is allowed to transmit when they have direct control over the operation of the station and are following the guidelines and practices set by the amateur radio community. This ensures that the transmission is conducted in a responsible and appropriate manner."
+    },
+    {
+      "NO.": "115",
+      "QUESTION": "115. What size of the call sign characters shall be posted on the windshield of a vehicle or vessel of a mobile station?",
+      "CHOICE A": "At least 7.08 cm high",
+      "CHOICE B": "At least 6.08 cm high",
+      "CHOICE C": "At least 8.08 cm high",
+      "ANSWER": "At least 5.08 cm high",
+      "FEED-BACK": "Feedback: \nThe call sign characters should be posted on the windshield of a vehicle or vessel of a mobile station and they should be at least 5.08 cm high."
+    },
+    {
+      "NO.": "116",
+      "QUESTION": "116. If a license is to be renewed for 3 years but is 14 months expired, and the prescribed license fee is P144.00 per year, then excluding filing fee the total amount payable is",
+      "CHOICE A": "144",
+      "CHOICE B": "720",
+      "CHOICE C": "432",
+      "ANSWER": "648",
+      "FEED-BACK": "Feedback: \r3yrs annual fee (144 x 3) = 432.00; 1 yr & 2mos expired (144 + 72) = 216.00 ; 432.00 + 216 = 648\r3"
+    },
+    {
+      "NO.": "117",
+      "QUESTION": "117. The minimum age requirement of an applicant for an amateur examination is",
+      "CHOICE A": "12 years old",
+      "CHOICE B": "11 years old",
+      "CHOICE C": "15 years old",
+      "ANSWER": "9 years old",
+      "FEED-BACK": "Feedback: \rThe minimum age requirement for an amateur examination is 9 years old. This means that applicants must be at least 9 years old in order to be eligible to take the examination."
+    },
+    {
+      "NO.": "118",
+      "QUESTION": "118. What appropriate steps can the NTC take on the harmful interference caused by an amateur station?",
+      "CHOICE A": "Limit the power of the working hours",
+      "CHOICE B": "Suspend the amateur station’s operation pending a satisfactory adjustment of the equipment",
+      "CHOICE C": "Order the temporary closure in the event of continued interference",
+      "ANSWER": "All of the above",
+      "FEED-BACK": "Feedback: \rThe NTC can take multiple appropriate steps to address the harmful interference caused by an amateur station. They can suspend the amateur station's operation until the equipment is adjusted satisfactorily. They can also limit the power during specific working hours to minimize the interference. Additionally, if the interference continues, they can order the temporary closure of the amateur station. Therefore, all of the above options are valid actions that the NTC can take to mitigate the harmful interference."
+    },
+    {
+      "NO.": "119",
+      "QUESTION": "119. The amateur Class “C” license of Mr. De Castro and will expire in 2007. If he was born on October 20, 1976 when should he file his license to avoid penalty?",
+      "CHOICE A": "September 20, 2007",
+      "CHOICE B": "September 30, 2007",
+      "CHOICE C": "September 20, 2008",
+      "ANSWER": "September 20, 2007",
+      "FEED-BACK": "Feedback: \nMr. De Castro's amateur Class \"C\" license will expire in 2007. To avoid penalty, he should file for his license before it expires. Since his license will expire in 2007, he should file his license on or before September 20, 2007."
+    },
+    {
+      "NO.": "120",
+      "QUESTION": "120. It is composed of the Amateur Radio Consultative Panel and persons or offices designated by the NTC shall formulate a question pool which shall be used for the amateur radio examinations.",
+      "CHOICE A": "Operators Pool Committee",
+      "CHOICE B": "Examination Pool Committe",
+      "CHOICE C": "Radio Operators Examination Committe",
+      "ANSWER": "Question Pool Committee",
+      "FEED-BACK": "Feedback: \rA question pool committee composed of the Amateur Radio Consultative Panel and persons or offices designated by the NTC shall formulate a question pool"
+    },
+    {
+      "NO.": "121",
+      "QUESTION": "121. Date of renewal & expiry of license",
+      "CHOICE A": "Previous Date",
+      "CHOICE B": "Date of Birth",
+      "CHOICE C": "Re-validated",
+      "ANSWER": "The day after",
+      "FEED-BACK": "Feedback: \rThe correct answer is \"The day after\" because it is the only option that makes sense in the context of the given information. The question is asking for an explanation of the date of renewal and expiry of a license, and \"The day after\" implies that the renewal and expiry dates occur immediately after the original date mentioned. The other options, such as \"Date of Birth\" and \"Previous Date-\" do not relate to license renewal and expiry. \"Re-validated\" suggests that the license has been updated or extended, but it does not provide information about specific dates."
+    },
+    {
+      "NO.": "122",
+      "QUESTION": "122. Amateur Class D licensee is authorized to operate VHF/UHF radio sets with a maximum power of",
+      "CHOICE A": "500 watts",
+      "CHOICE B": "300 watts",
+      "CHOICE C": "200 watts",
+      "ANSWER": "100 watts",
+      "FEED-BACK": "Feedback: \rAn Amateur Class D licensee is authorized to operate VHF/UHF radio sets with a maximum power of 100 watts. This means that they are allowed to transmit at a power level of up to 100 watts when using VHF/UHF frequencies. This power limit helps to ensure that amateur radio operators do not cause interference to other radio services and allows for efficient use of the radio spectrum."
+    },
+    {
+      "NO.": "123",
+      "QUESTION": "123. A Class “D” licensee shall be authorized to operate a VHF fixed radio station with an output power not exceeding ___watts and ___watts on VHF mobile or portable.",
+      "CHOICE A": "An output power not exceeding 1000 watts and 200 watts on VHF mobile or portable.",
+      "CHOICE B": "An output power not exceeding 10 watts and 2 watts on VHF mobile or portable.",
+      "CHOICE C": "An output power not exceeding 50 watts and 10 watts on VHF mobile or portable.",
+      "ANSWER": "An output power not exceeding 100 watts and 20 watts on VHF mobile or portable.",
+      "FEED-BACK": "Feedback: \rA Class \"D\" licensee is authorized to operate a VHF fixed radio station with an output power not exceeding 1000 watts, which is the maximum allowed. However, when operating on VHF mobile or portable, the output power is limited to 200 watts, which is the maximum allowed in those cases. Therefore, the correct answer is that the output power should not exceed 100 watts on VHF mobile or portable."
+    },
+    {
+      "NO.": "124",
+      "QUESTION": "124. It shall formulate the appropriate implementing rules and regulations for the Revised Amateur Radio Regulations (MEMORANDUM CIRCULAR NO. 03-08-2012).",
+      "CHOICE A": "International Amateur Radio Union",
+      "CHOICE B": "Philippine Amateur Radio Association",
+      "CHOICE C": "National Telecommunications Commission",
+      "ANSWER": "Amateur Radio Consultative Panel",
+      "FEED-BACK": "Feedback: \rThe correct answer is the Amateur Radio Consultative Panel. This panel is responsible for formulating the appropriate implementing rules and regulations for the Revised Amateur Radio Regulations. The National Telecommunications Commission, Philippine Amateur Radio Association, and International Amateur Radio Union may also be involved in the regulation of amateur radio, but it is the Consultative Panel that specifically deals with the formulation of rules and regulations."
+    },
+    {
+      "NO.": "125",
+      "QUESTION": "125. What government agency is responsible for the regulation of the amateur radio service?",
+      "CHOICE A": "PARA",
+      "CHOICE B": "PLDT",
+      "CHOICE C": "PNB",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe National Telecommunications Commission (NTC) is responsible for the regulation of the amateur radio service. They oversee the licensing, operation, and enforcement of rules and regulations for amateur radio operators in the country. The NTC ensures that amateur radio operators comply with frequency allocations, technical standards, and other requirements to maintain a safe and efficient amateur radio service."
+    },
+    {
+      "NO.": "126",
+      "QUESTION": "126. Holders of Class \"C\" amateur certificate may possess how many radio stations?",
+      "CHOICE A": "Three stations",
+      "CHOICE B": "Two",
+      "CHOICE C": "One",
+      "ANSWER": "As many as they could",
+      "FEED-BACK": "Feedback: \rThe answer \"as many as they could\" suggests that holders of Class \"C\" amateur certificates have the freedom to possess any number of radio stations. There is no specific limit mentioned for the number of radio stations they can own, indicating that they can have as many as they desire or are capable of managing."
+    },
+    {
+      "NO.": "127",
+      "QUESTION": "127. It is the term for any transmission, emission and reception of signs, signals, writings, images and sounds or intelligence of any nature by wire, radio, optical or other electromagnetic systems.",
+      "CHOICE A": "Telephony",
+      "CHOICE B": "Telephotography",
+      "CHOICE C": "Radio Broadcast",
+      "ANSWER": "Telecommunications",
+      "FEED-BACK": "Feedback: \rTelecommunications is the correct answer because it encompasses the transmission, emission, and reception of information through various means such as wire, radio, optical, or electromagnetic systems. This term includes telephony, which refers to the transmission of voice signals, as well as telephotography, which involves the transmission of images. Additionally, telecommunications also covers the transmission of written messages, signals, and sounds, making it the most comprehensive term among the options given."
+    },
+    {
+      "NO.": "128",
+      "QUESTION": "128. Refers to a Class “A” Amateur Radio Operator who has operated his own amateur station for at least five (5) years and has been deputized by the NTC to inspect amateur stations.",
+      "CHOICE A": "Amateur Radio Club President",
+      "CHOICE B": "Special Amateur Radio Operator",
+      "CHOICE C": "Amateur Radio Commissioner",
+      "ANSWER": "Amateur Radio Inspector",
+      "FEED-BACK": "Feedback: \nAn Amateur Radio Inspector is a Class \"A\" Amateur Radio Operator who has operated their own amateur station for at least five years and has been deputized by the NTC (National Telecommunications Commission) to inspect amateur stations. This person is responsible for ensuring that amateur radio stations comply with regulations and standards set by the NTC. They have the authority to conduct inspections and enforce compliance within the amateur radio community."
+    },
+    {
+      "NO.": "129",
+      "QUESTION": "129. NCR belongs to which Amateur Radio District?",
+      "CHOICE A": "District 2",
+      "CHOICE B": "District 3",
+      "CHOICE C": "District 4",
+      "ANSWER": "District 1",
+      "FEED-BACK": "Feedback: \rNCR belongs to District 1 in terms of Amateur Radio Districts."
+    },
+    {
+      "NO.": "130",
+      "QUESTION": "130. The NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines by issuing a Temporary Permit valid for _______ upon submission of the required documents.",
+      "CHOICE A": "2 years",
+      "CHOICE B": "6 months",
+      "CHOICE C": "9 months",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines by issuing a Temporary Permit valid for 1 year upon submission of the required documents. This means that the foreign visitor will be allowed to operate the amateur radio station for a period of 1 year, as long as they have submitted the necessary documents to the NTC. After the 1-year period, the foreign visitor may need to renew their permit if they wish to continue operating the amateur radio station."
+    },
+    {
+      "NO.": "131",
+      "QUESTION": "131. Which of the the following frequency bands is not allocated by the NTC to the amateur Radio Service in the Philippines.",
+      "CHOICE A": "144.000 - 146.000 MHz",
+      "CHOICE B": "430.000 - 440.000 MHz",
+      "CHOICE C": "7.000 - 7.200 MHz",
+      "ANSWER": "54.000 - 60.000 MHz",
+      "FEED-BACK": "Feedback: \rThe frequency band 54.000 , 60.000 MHz is not allocated by the NTC to the amateur Radio Service in the Philippines.\rT"
+    },
+    {
+      "NO.": "132",
+      "QUESTION": "132. What is the usual maximum term for amateur radio station license?",
+      "CHOICE A": "2 years",
+      "CHOICE B": "1 year",
+      "CHOICE C": "Lifetime",
+      "ANSWER": "3 years",
+      "FEED-BACK": "Feedback: \rThe usual maximum term for an amateur radio station license is 3 years. This allows amateur radio operators to have a valid license for a significant period of time before needing to renew it. This duration strikes a balance between ensuring that operators are knowledgeable and up to date with regulations, while also providing them with a reasonable timeframe to enjoy their hobby without frequent administrative tasks."
+    },
+    {
+      "NO.": "133",
+      "QUESTION": "133. What is required if a continuous portable operation exceeds four (4) months in any other call area?",
+      "CHOICE A": "Permit to transmit to other call area",
+      "CHOICE B": "New license",
+      "CHOICE C": "Permit to operate",
+      "ANSWER": "Modification of the station license",
+      "FEED-BACK": "Feedback: \rIf a continuous portable operation exceeds four (4) months in any other call area, it is required to modify the station license. This means that the license holder must make changes to their existing license to reflect the extended duration of the portable operation. This modification ensures that the operation remains compliant with regulations and that the license accurately reflects the current operating conditions."
+    },
+    {
+      "NO.": "134",
+      "QUESTION": "134. The Technician Class is also known as",
+      "CHOICE A": "Class A",
+      "CHOICE B": "Class B",
+      "CHOICE C": "Class D",
+      "ANSWER": "Class C",
+      "FEED-BACK": "Feedback: \rThe Technician Class is also known as Class C."
+    },
+    {
+      "NO.": "135",
+      "QUESTION": "135. The NTC shall grant a unique amateur __________ to the applicant who successfully passes the amateur radio exams and meets the minimum conditions for the grant of license.",
+      "CHOICE A": "Radio",
+      "CHOICE B": "License",
+      "CHOICE C": "Code name",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rThe correct answer is \"Call sign.\" In the context of amateur radio, a call sign is a unique identifier assigned to an individual or station. The NTC (presumably the governing body) grants this call sign to applicants who pass the amateur radio exams and meet the necessary requirements for obtaining a license. The call sign is used to identify and differentiate between different operators or stations in radio communications."
+    },
+    {
+      "NO.": "136",
+      "QUESTION": "136. How much is the fee for the Permit to Purchase/Sell or Transfer of ownership transmitter/transceiver?",
+      "CHOICE A": "P120.00",
+      "CHOICE B": "P180.00",
+      "CHOICE C": "P60.00",
+      "ANSWER": "P50.00",
+      "FEED-BACK": "Feedback: \rThe correct answer is P50.00. This is the fee for the Permit to Purchase/Sell or Transfer of ownership transmitter/transceiver."
+    },
+    {
+      "NO.": "137",
+      "QUESTION": "137. What is the Morse Code Speed requirement for Amateur Class C Examination?",
+      "CHOICE A": "1 word per Minute",
+      "CHOICE B": "5 words per Minute",
+      "CHOICE C": "15 words per Minute",
+      "ANSWER": "None of the above",
+      "FEED-BACK": "Feedback: \rThe Morse Code Speed requirement for Amateur Class C Examination is None. This means that there is no specific speed requirement for Morse Code in this examination."
+    },
+    {
+      "NO.": "138",
+      "QUESTION": "138. How much is the fee for the Permit to Purchase/Sell or Transfer of ownership transmitter/transceiver?",
+      "CHOICE A": "P120.00",
+      "CHOICE B": "P180.00",
+      "CHOICE C": "P60.00",
+      "ANSWER": "P50.00",
+      "FEED-BACK": "Feedback: \rThe correct answer is P50.00. This is the fee for the Permit to Purchase/Sell or Transfer of ownership transmitter/transceiver."
+    },
+    {
+      "NO.": "139",
+      "QUESTION": "139. Which of the following statements is not correct on the Installation and Operation of Repeaters?",
+      "CHOICE A": "A repeater license, which is separate and distinct from the ARSL or club station license, shall be issued in favor of a club or association. A certified true copy of the repeater license shall be posted at the location of the repeater and it shall bear the same call sign of the RAL or the club station.",
+      "CHOICE B": "As far as practicable, repeaters shall be designed and installed in an orderly manner to enhance the development of amateur radio communication in the country.",
+      "CHOICE C": "Authorization to install and operate repeaters shall be granted only to duly recognized amateur associations, clubs, societies or schools.",
+      "ANSWER": "The amateur shall operate the repeaters properly on an interference or non-interference basis.",
+      "FEED-BACK": "Feedback: \rThe statement \"The amateur shall operate the repeaters properly on an interference or non-interference basis\" is not correct because it does not provide clear guidelines on how the repeaters should be operated. It does not specify whether the amateur should prioritize non-interference or take measures to avoid interference with other radio communications. The other statements provide information on the design, installation, authorization, and licensing of repeaters, which are important aspects of their installation and operation."
+    },
+    {
+      "NO.": "140",
+      "QUESTION": "140. The Technician Class is also known as",
+      "CHOICE A": "Class A",
+      "CHOICE B": "Class B",
+      "CHOICE C": "Class D",
+      "ANSWER": "Class C",
+      "FEED-BACK": "Feedback: \rThe Technician Class is also known as Class C."
+    },
+    {
+      "NO.": "141",
+      "QUESTION": "141. What are some provinces under amateur District 4?",
+      "CHOICE A": "Camarines Sur, Camarines Norte, Albay",
+      "CHOICE B": "Capiz, Cebu, Mandaue",
+      "CHOICE C": "Palawan, Romblon, Negros Oriental",
+      "ANSWER": "Camarines Sur, Camarines Norte, Albay",
+      "FEED-BACK": "Feedback: \rThe provinces under amateur District 4 are Camarines Sur, Camarines Norte, and Albay."
+    },
+    {
+      "NO.": "142",
+      "QUESTION": "142. It is the term for any transmission, emission and reception of signs, signals, writings, images and sounds or intelligence of any nature by wire, radio, optical or other electromagnetic systems.",
+      "CHOICE A": "Radio Broadcast",
+      "CHOICE B": "Telephotography",
+      "CHOICE C": "Telephony",
+      "ANSWER": "Telecommunications",
+      "FEED-BACK": "Feedback: \rTelecommunications refers to the transmission, emission, and reception of various forms of communication, such as signs, signals, writings, images, and sounds, using different methods like wire, radio, optical, or other electromagnetic systems. This term encompasses a wide range of communication technologies and systems that allow for the exchange of information over long distances. It includes telephone networks, internet communication, wireless communication, and other forms of electronic communication."
+    },
+    {
+      "NO.": "143",
+      "QUESTION": "143. What shall an amateur do upon knowing his station is causing harmful interference to the operation of any existing station?",
+      "CHOICE A": "Notify NTC within 7 days",
+      "CHOICE B": "Contact affected station immediately",
+      "CHOICE C": "Fix radio transmitter within 24hours",
+      "ANSWER": "Cease operation immediately",
+      "FEED-BACK": "Feedback: \rUpon knowing that his station is causing harmful interference to the operation of any existing station, an amateur should cease operation immediately. This is the most appropriate action to take in order to prevent further interference and ensure the smooth operation of the existing station. Ceasing operation immediately allows for the identification and resolution of the interference issue without causing any additional disruption or harm."
+    },
+    {
+      "NO.": "144",
+      "QUESTION": "144. All transmissions on this frequency shall be kept to a minimum to facilitate the reception of distress calls, what is this frequency?",
+      "CHOICE A": "430 MHz",
+      "CHOICE B": "144.94 MHz",
+      "CHOICE C": "144 MHz",
+      "ANSWER": "145 MHz",
+      "FEED-BACK": "Feedback: \rThe frequency of 145 MHz is used for transmitting distress calls. It is important to keep transmissions on this frequency to a minimum in order to ensure that distress calls can be received without interference. This frequency is specifically designated for emergency communication and should be used responsibly to prioritize the safety and well-being of individuals in need of assistance."
+    },
+    {
+      "NO.": "145",
+      "QUESTION": "145. General Qualifications for Examinees – An applicant for examination must possess the following general qualifications: * A citizen of the Philippine or a citizen of other countries that provide the same privilege extended to Filipino nationals in their country as far as examination is concerned. * At least twelve (12) years old for Class A, B and C. For Class D, the minimum age shall be nine (9) years old provided there is an affidavit of parental consent.Ability * to transmit and/or receive messages either in Filipino, English, or any of the Philippine languages.",
+      "CHOICE A": "A citizen of the Philippine or a citizen of other countries that provide the same privilege extended to Filipino nationals in their country as far as examination is concerned. At least twelve (12) years old for Class A, B and C. For Class D, the minimum age shall be nine (9) years old provided there is an affidavit of parental consent. Ability to transmit and/or receive messages either in Filipino, English, or any of the Philippine languages",
+      "CHOICE B": "A citizen of the US or China At least twelve (12) years old for Class A, B and C. For Class D, the minimum age shall be nine (9) years old provided there is an affidavit of parental consent. Ability to transmit and/or receive messages either in Chinese, Cebuano, English, or any of Arab languages.",
+      "CHOICE C": "A member of a Philippine civic group At least twelve (15) years old for Class A, B C and D. Ability to transmit and/or receive messages either in 10-codes, Tagalog, English, or Cebuano.",
+      "ANSWER": "A citizen of the Philippine or a citizen of other countries that provide the same privilege extended to Filipino nationals in their country as far as examination is concerned. At least twelve (21) years old for Class A, B and C. For Class D, the minimum age shall be nine (18) years. Ability to transmit and/or receive messages either in Filipino, English, or German languages.",
+      "FEED-BACK": "Feedback: \rThe correct answer states that an applicant for examination must be a citizen of the Philippine or a citizen of other countries that provide the same privilege extended to Filipino nationals in their country as far as examination is concerned. They must also be at least twelve (12) years old for Class A, B, and C, and for Class D, the minimum age shall be nine (9) years old provided there is an affidavit of parental consent. Additionally, they must have the ability to transmit and/or receive messages either in Filipino, English, or any of the Philippine languages."
+    },
+    {
+      "NO.": "146",
+      "QUESTION": "146. What is the United Nations agency based in Geneva, Switzerland which coordinates the global use of the radio spectrum?",
+      "CHOICE A": "UTI",
+      "CHOICE B": "TUI",
+      "CHOICE C": "TIU",
+      "ANSWER": "ITU",
+      "FEED-BACK": "Feedback: \rThe correct answer is ITU. ITU stands for International Telecommunication Union, which is a United Nations agency based in Geneva, Switzerland. It is responsible for coordinating the global use of the radio spectrum, as well as promoting international cooperation in telecommunications and information and communication technologies."
+    },
+    {
+      "NO.": "147",
+      "QUESTION": "147. What is the distress signal for radiotelephony?",
+      "CHOICE A": "SOS",
+      "CHOICE B": "Sorry",
+      "CHOICE C": "Roger",
+      "ANSWER": "Mayday",
+      "FEED-BACK": "Feedback: \rMayday is the distress signal for radiotelephony. It is derived from the French word \"m'aidez\" which means \"help me\". This signal is internationally recognized and used by pilots, mariners, and other individuals in emergency situations to indicate that they are in immediate danger and require immediate assistance. Using the term \"Mayday\" helps to ensure clear communication and prompt response from the relevant authorities or nearby vessels/aircraft."
+    },
+    {
+      "NO.": "148",
+      "QUESTION": "148. The frequency of a transmitter operating on frequencies below ______ must be suppressed during periods of reception.",
+      "CHOICE A": "145 MHz",
+      "CHOICE B": "174 MHz",
+      "CHOICE C": "150 MHz",
+      "ANSWER": "144 MHz",
+      "FEED-BACK": "Feedback: \rDuring periods of reception, the frequency of a transmitter operating on frequencies below 144 MHz must be suppressed. This means that any signals transmitted at frequencies lower than 144 MHz should be reduced or eliminated in order to prevent interference with the reception of other signals.\rD"
+    },
+    {
+      "NO.": "149",
+      "QUESTION": "149. Eastern Visayas belongs to which Amateur Radio District?",
+      "CHOICE A": "District 4",
+      "CHOICE B": "District 6",
+      "CHOICE C": "District 3",
+      "ANSWER": "District 5",
+      "FEED-BACK": "Feedback: \rEastern Visayas belongs to Amateur Radio District 5."
+    },
+    {
+      "NO.": "150",
+      "QUESTION": "150. What is the equivalent of class C amateur?",
+      "CHOICE A": "Foundation Class",
+      "CHOICE B": "General Class",
+      "CHOICE C": "Extra Class",
+      "ANSWER": "Technician Class",
+      "FEED-BACK": "Feedback: \rThe equivalent of class C amateur is the Technician Class."
+    },
+    {
+      "NO.": "151",
+      "QUESTION": "151. MIMAROPA belongs to which Amateur Radio District?",
+      "CHOICE A": "District 2",
+      "CHOICE B": "District 4",
+      "CHOICE C": "District 3",
+      "ANSWER": "District 1",
+      "FEED-BACK": "Feedback: \rMIMAROPA belongs to District 1 of the Amateur Radio Districts."
+    },
+    {
+      "NO.": "152",
+      "QUESTION": "152. Any transmission, emission, or reception of signs, signal, writings, images and sounds or intelligence of any nature by wire, radio, optical or other electromagnetic systems.",
+      "CHOICE A": "Radiocommunications",
+      "CHOICE B": "Amateur Communications",
+      "CHOICE C": "Wireless Communications",
+      "ANSWER": "Telecommunications",
+      "FEED-BACK": "Feedback: \rTelecommunications refers to the transmission, emission, or reception of signs, signals, writings, images, and sounds or intelligence of any nature by wire, radio, optical, or other electromagnetic systems. This includes various forms of communication such as telephone networks, internet communication, and broadcasting. The term encompasses both wired and wireless communication methods and is a broad category that covers all forms of electronic communication. Therefore, telecommunications is the correct answer as it encompasses the entire range of communication methods mentioned in the question."
+    },
+    {
+      "NO.": "153",
+      "QUESTION": "153. The Class C Amateur Examination shall cover",
+      "CHOICE A": "Elements I and II",
+      "CHOICE B": "Elements V, VI, and VII",
+      "CHOICE C": "Elements VIII, IX, and X",
+      "ANSWER": "Elements II, III, and IV",
+      "FEED-BACK": "Feedback: \rThe Class C Amateur Examination will cover Elements II, III, and IV. This means that the exam will focus on these specific elements and test the knowledge and understanding of the topics included in these elements."
+    },
+    {
+      "NO.": "154",
+      "QUESTION": "154. An amateur radio station is allowed to contact",
+      "CHOICE A": "Broad stations",
+      "CHOICE B": "Any commercial station",
+      "CHOICE C": "None of the above",
+      "ANSWER": "all type of stations",
+      "FEED-BACK": "Feedback: \rAn amateur radio station is allowed to contact all types of stations. Amateur radio operators have the privilege to communicate with other amateur radio stations, as well as with stations operated by licensed amateurs in other countries. They can establish contact with a wide range of stations, including those operated by individuals, clubs, organizations, or even government agencies, as long as they hold the necessary licenses. This allows for a diverse and global network of communication within the amateur radio community."
+    },
+    {
+      "NO.": "155",
+      "QUESTION": "155. A Class “C” licensee is authorized to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or 200 watts PEP on single side band suppressed carrier and _______ on VHF fixed, portable or mobile station.",
+      "CHOICE A": "500 watts",
+      "CHOICE B": "1 kilowatt",
+      "CHOICE C": "2 kilowatts",
+      "ANSWER": "100 watts",
+      "FEED-BACK": "Feedback: \rA Class “C” licensee shall be authorized to operate an HF fixed radio station and/or mobile radio station with an output power not exceeding 100 watts on CW or 200 watts PEP on single side band suppressed carrier and 100W"
+    },
+    {
+      "NO.": "156",
+      "QUESTION": "156. On what month does the expiration of a license issued by NTC fall, except those with lifetime privileges?",
+      "CHOICE A": "Incorporation date",
+      "CHOICE B": "Anniversary date of the radio club",
+      "CHOICE C": "Date of certification",
+      "ANSWER": "Licensee’s birth month",
+      "FEED-BACK": "Feedback: \rThe expiration of a license issued by NTC falls on the licensee's birth month. This means that the license will need to be renewed every year during the month of the licensee's birth. This is different from licenses with lifetime privileges, which do not have an expiration date."
+    },
+    {
+      "NO.": "157",
+      "QUESTION": "157. The NTC shall issue new or renewal licenses or certificates to qualified applicants who have submitted the appropriate application form which shall be valid for a minimum of ______ with the expiration date falling on the licensee's birth date.",
+      "CHOICE A": "2 years",
+      "CHOICE B": "3 years",
+      "CHOICE C": "5 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC issues new or renewal licenses or certificates to qualified applicants who have submitted the appropriate application form. These licenses or certificates are valid for a minimum of 1 year, with the expiration date falling on the licensee's birth date."
+    },
+    {
+      "NO.": "158",
+      "QUESTION": "158. What document should be filed before an amateur radio license is renewed evidencing his/her involvement in any amateur radio activities?",
+      "CHOICE A": "Secretary's certificate",
+      "CHOICE B": "Logbook of net call",
+      "CHOICE C": "Mayor's permit",
+      "ANSWER": "Proof of Amateur Activity",
+      "FEED-BACK": "Feedback: \rBefore an amateur radio license is renewed, the licensee should provide proof of their involvement in any amateur radio activities. This is necessary to ensure that the licensee is actively participating in the amateur radio community and is engaged in the appropriate activities related to their license. The proof of amateur activity serves as evidence that the licensee is fulfilling their responsibilities and demonstrating their commitment to the hobby. This documentation helps to maintain the integrity and credibility of the amateur radio licensing process."
+    },
+    {
+      "NO.": "159",
+      "QUESTION": "159. The NTC may authorize a foreign visitor to operate an amateur radio station while temporarily staying in the Philippines by issuing a Temporary Permit valid for _______ upon submission of the required documents.",
+      "CHOICE A": "6 months",
+      "CHOICE B": "9 months",
+      "CHOICE C": "2 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rThe NTC (National Telecommunications Commission) has the authority to grant a Temporary Permit to a foreign visitor for operating an amateur radio station in the Philippines. This permit is valid for a period of 1 year. The foreign visitor must submit the necessary documents to obtain this permit."
+    },
+    {
+      "NO.": "160",
+      "QUESTION": "160. What is the subject matter of element 2 of the amateur radio examinations?",
+      "CHOICE A": "Signals, Frequencies and Emission",
+      "CHOICE B": "Radio Wave Propagation",
+      "CHOICE C": "Fundamentals of Electronics and Electricity",
+      "ANSWER": "Radio Laws",
+      "FEED-BACK": "Feedback: \rThe subject matter of element 2 of the amateur radio examinations is Radio Laws. This means that individuals taking the exam will be tested on their knowledge and understanding of the laws and regulations governing amateur radio operations. This may include topics such as licensing requirements, operating procedures, frequency allocations, and other legal aspects related to amateur radio communication."
+    },
+    {
+      "NO.": "161",
+      "QUESTION": "161. SMI company was found to have committed the following violations: illegal purchase and possession of portable transceiver. How much fine must the Company pay to NTC?",
+      "CHOICE A": "100,000.00 Pesos",
+      "CHOICE B": "5,000.00 Pesos",
+      "CHOICE C": "10.00 Pesos",
+      "ANSWER": "10,000.00 Pesos",
+      "FEED-BACK": "Feedback: \rThe correct answer is 10-000.00 Pesos. This is the amount of fine that the SMI company must pay to the NTC for the violations of illegal purchase and possession of a portable transceiver."
+    },
+    {
+      "NO.": "162",
+      "QUESTION": "162. What is the Morse code speed requirement for Amateur Class “A”?",
+      "CHOICE A": "15 WPM",
+      "CHOICE B": "25 WPM",
+      "CHOICE C": "12 WPM",
+      "ANSWER": "5 WPM",
+      "FEED-BACK": "Feedback: \rThe Morse code speed requirement for Amateur Class \"A\" is 5 WPM. This means that amateur radio operators in Class \"A\" must be able to send and receive Morse code at a minimum speed of 5 words per minute. Morse code is a system of communication that uses a series of dots and dashes to represent letters and numbers. Being able to effectively use Morse code is important for communication in certain situations, especially in emergency situations when other forms of communication may be unavailable."
+    },
+    {
+      "NO.": "163",
+      "QUESTION": "163. The Amateur Repeater Station is in the name of?",
+      "CHOICE A": "None",
+      "CHOICE B": "Operator",
+      "CHOICE C": "Head",
+      "ANSWER": "Trustee",
+      "FEED-BACK": "Feedback: \rThe correct answer is Trustee. In the context of an Amateur Repeater Station, the trustee refers to the person or entity that holds the license for the station and is responsible for its operation. The trustee is legally responsible for ensuring that the station operates within the regulations and guidelines set by the relevant authorities. This includes maintaining proper records, adhering to frequency allocations, and managing any necessary coordination with other stations. The trustee may or may not be the same person as the operator or head of the station."
+    },
+    {
+      "NO.": "164",
+      "QUESTION": "164. DU1ABC had transferred his fixed station to Pangasinan and after 4 months had his license modified. What should his new call sign be?",
+      "CHOICE A": "DU1XX",
+      "CHOICE B": "DU2XX",
+      "CHOICE C": "DU1ABC",
+      "ANSWER": "DU2ABC",
+      "FEED-BACK": "Feedback: \rThe correct answer is DU2ABC because when a fixed station is transferred to a new location, the call sign is modified by changing the first letter of the prefix. In this case, \"DU1\" is changed to \"DU2\" to indicate the new location. The rest of the call sign remains the same."
+    },
+    {
+      "NO.": "165",
+      "QUESTION": "165. In April 2011, NTC issued an order stating that in times of disasters and national emergencies, the ______________ frequencies shall be used by amateurs as calling frequencies in the 2m and 40m, respectively.",
+      "CHOICE A": "145.00 and 7.395 MHz",
+      "CHOICE B": "144.00 and 7.000 MHz",
+      "CHOICE C": "145.00 and 7.100 MHz",
+      "ANSWER": "144.74 and 7.095 MHz",
+      "FEED-BACK": "Feedback: \rDuring times of disasters and national emergencies, the National Telecommunications Commission (NTC) issued an order in April 2011 stating that amateur radio operators should use the frequencies 144.74 MHz and 7.095 MHz as calling frequencies in the 2m and 40m bands, respectively. These frequencies were designated for emergency communication purposes to ensure efficient and coordinated communication among amateur radio operators during critical situations."
+    },
+    {
+      "NO.": "166",
+      "QUESTION": "166. The content of a radio message shall be divulged only to the",
+      "CHOICE A": "All listeners",
+      "CHOICE B": "To all members",
+      "CHOICE C": "All stations",
+      "ANSWER": "Addressee",
+      "FEED-BACK": "Feedback: \rThe content of a radio message shall be divulged only to the addressee. This means that the information should only be shared with the intended recipient of the message. It should not be disclosed to all stations, all listeners, or to all members. This ensures that the message remains confidential and is only received by the intended party, maintaining the privacy and security of the communication."
+    },
+    {
+      "NO.": "167",
+      "QUESTION": "167. What is DW, DV or DU in the formation of amateur call sign?",
+      "CHOICE A": "Title sign",
+      "CHOICE B": "Affix",
+      "CHOICE C": "Suffix B",
+      "ANSWER": "Prefix",
+      "FEED-BACK": "Feedback: \rThe correct answer is \"Prefix\" because in the formation of an amateur call sign, DW, DV, or DU refers to the prefix. A call sign typically consists of a prefix, which identifies the country or region, followed by a series of letters and numbers that make it unique to each individual amateur radio operator. Therefore, DW, DV, or DU represents the initial part of the call sign, indicating the geographical location or country of the operator."
+    },
+    {
+      "NO.": "168",
+      "QUESTION": "168. What is the radiotelephony distress signal?",
+      "CHOICE A": "Help",
+      "CHOICE B": "SOS",
+      "CHOICE C": "Help",
+      "ANSWER": "Mayday",
+      "FEED-BACK": "Feedback: \rMayday is the radiotelephony distress signal used by pilots and mariners to indicate a life-threatening emergency. It is derived from the French phrase \"m'aider-\" which means \"help me.\" This signal is universally recognized and is used to request immediate assistance in situations such as aircraft or vessel accidents, medical emergencies, or imminent danger. By transmitting the distress call \"Mayday\" over the radio, the person in distress alerts others to their urgent need for help, ensuring a prompt response from nearby authorities or fellow operators."
+    },
+    {
+      "NO.": "169",
+      "QUESTION": "169. In April 2011, NTC issued an order stating that in times of disasters and national emergencies, the frequencies 144.74 and 7.095 MHz shall be used by amateurs as calling frequencies in the 2m and 40m, respectively.",
+      "CHOICE A": "MC 03-08-2012",
+      "CHOICE B": "MC 03-08-2011",
+      "CHOICE C": "Ministry Circular No. 87-174",
+      "ANSWER": "MC 04-03-2011",
+      "FEED-BACK": "Feedback: \nIn April 2011, NTC issued MC 04-03-2011 stating that in times of disasters and national emergencies, the frequencies 144.74 and 7.095MHz shall be used by amateurs as calling frequencies in the 2m and 40m, respectively."
+    },
+    {
+      "NO.": "170",
+      "QUESTION": "170. An amateur Radio Club must have at least how many members?",
+      "CHOICE A": "3",
+      "CHOICE B": "10",
+      "CHOICE C": "100",
+      "ANSWER": "25",
+      "FEED-BACK": "Feedback: \rAn amateur Radio Club must have at least 25 members because it takes a certain number of people to effectively operate and maintain a radio club. With fewer than 25 members, there may not be enough manpower or resources to carry out club activities and initiatives. Additionally, having a larger membership allows for a greater diversity of skills, knowledge, and interests, which can enhance the overall experience and offerings of the club."
+    },
+    {
+      "NO.": "171",
+      "QUESTION": "171. What is the frequency used in the 40m band in times of disasters and national emergencies?",
+      "CHOICE A": "7.015 MHz",
+      "CHOICE B": "7.025 MHz",
+      "CHOICE C": "7.045 MHz",
+      "ANSWER": "7.095 MHz",
+      "FEED-BACK": "Feedback: \nIn April 2011, NTC issued MC 04-03-2011 stating that in times of disasters and national emergencies, the frequencies 144.74 and 7.095 MHz shall be used by amateurs as calling frequencies in the 2m and 40m, respectively."
+    },
+    {
+      "NO.": "172",
+      "QUESTION": "172. The frequency of a transmitter operating below ____ must be suppressed during periods of reception.",
+      "CHOICE A": "100 Hz",
+      "CHOICE B": "2000 Watts",
+      "CHOICE C": "144 MHz",
+      "ANSWER": "1 MHz",
+      "FEED-BACK": "Feedback: \nDuring periods of reception, the frequency of a transmitter operating below 1 MHz must be suppressed. This means that the transmitter's signal at frequencies below 1 MHz should be reduced or eliminated to avoid interference with the received signals. This is necessary to ensure clear and uninterrupted reception of the desired signals."
+    },
+    {
+      "NO.": "173",
+      "QUESTION": "173. What size of the call sign characters shall be posted on the equipment itself for a portable station?",
+      "CHOICE A": "At least 0.855 cm",
+      "CHOICE B": "At least 0.745 cm",
+      "CHOICE C": "At least 0.645 cm",
+      "ANSWER": "At least 0.635 cm",
+      "FEED-BACK": "Feedback: \rThe call sign characters for a portable station should be posted on the equipment itself with a size of at least 0.635 cm. This is important for identification purposes and to ensure that the call sign is easily readable."
+    },
+    {
+      "NO.": "174",
+      "QUESTION": "174. The Class B Amateur Examination shall cover",
+      "CHOICE A": "Elements II, III, and IV",
+      "CHOICE B": "Elements VIII, IX, and X",
+      "CHOICE C": "Elements I and II",
+      "ANSWER": "Elements V, VI, and VII",
+      "FEED-BACK": "Feedback: \rThe correct answer is Elements V, VI, and VII. This means that the Class B Amateur Examination will focus on these specific elements. It is implied that the examination will not cover Elements II, III, IV, VIII, IX, and X, as they are not mentioned in the answer."
+    },
+    {
+      "NO.": "175",
+      "QUESTION": "175. Who in the Amateur Radio Service is called an amateur or an amateur radio operator?",
+      "CHOICE A": "A person interested in radio technique with heart in disaster response",
+      "CHOICE B": "A person interested in radio technique solely to increase personal growth and development",
+      "CHOICE C": "A person interested in radio technique duly licensed by DOTC",
+      "ANSWER": "A person interested in radio technique solely with a personal aim and without pecuniary interest",
+      "FEED-BACK": "Feedback: \rAn amateur or an amateur radio operator in the Amateur Radio Service is someone who is interested in radio technique solely with a personal aim and without pecuniary interest. This means that they engage in radio activities for personal growth and development rather than for financial gain. They pursue this hobby as a means of learning and exploring the field of radio technology without any commercial motives."
+    },
+    {
+      "NO.": "176",
+      "QUESTION": "176. Communications with amateur stations of other countries is allowed but shall be limited only to__________?",
+      "CHOICE A": "Is not allowed",
+      "CHOICE B": "Music",
+      "CHOICE C": "Weather reports",
+      "ANSWER": "Unimportant messages",
+      "FEED-BACK": "Feedback: \rCommunications with amateur stations of other countries are allowed but shall be limited only to unimportant messages. This means that while amateur radio operators can communicate with stations in other countries, they should restrict their conversations to non-essential or trivial messages. This limitation ensures that the amateur radio spectrum is not congested with unnecessary or lengthy conversations, allowing for efficient and effective communication between amateur operators across borders."
+    },
+    {
+      "NO.": "177",
+      "QUESTION": "177. The minimum age requirement for amateur radio examination is?",
+      "CHOICE A": "21 years old",
+      "CHOICE B": "5 years old",
+      "CHOICE C": "8 years old",
+      "ANSWER": "12 years for class A, B. C and 9 years old for class D",
+      "FEED-BACK": "Feedback: \rThe minimum age requirement for amateur radio examination is 12 years for class A, B, and C, and 9 years old for class D. This means that individuals who are at least 12 years old can take the examination for class A, B, and C licenses, while those who are at least 9 years old can take the examination for class D license."
+    },
+    {
+      "NO.": "178",
+      "QUESTION": "178. What is the radiotelephone safety signal?",
+      "CHOICE A": "BREAKER",
+      "CHOICE B": "FUSE",
+      "CHOICE C": "None of the above",
+      "ANSWER": "SECURITE",
+      "FEED-BACK": "Feedback: \rThe radiotelephone safety signal is \"SECURITE\". This signal is used to indicate that the message being transmitted is related to the safety of navigation or important meteorological warnings. It is used to grab the attention of all vessels in the vicinity and ensure that the message is understood and acted upon promptly. The use of this signal helps to maintain safety and prevent accidents at sea."
+    },
+    {
+      "NO.": "179",
+      "QUESTION": "179. An amateur radio station log book with a distress traffic entry should be kept for a period of",
+      "CHOICE A": "2 years",
+      "CHOICE B": "5 years",
+      "CHOICE C": "4 years",
+      "ANSWER": "1 year",
+      "FEED-BACK": "Feedback: \rAmateur radio operators are required to keep a logbook of their communications. In the case of a distress traffic entry, it is important to keep a record of the incident for a certain period of time. Keeping the log book for 1 year allows for sufficient time to review and analyze the incident if needed, while also ensuring that the log book does not become cluttered with outdated information. This duration strikes a balance between maintaining records and managing the log book effectively."
+    },
+    {
+      "NO.": "180",
+      "QUESTION": "180. The Philippines is divided into how many amateur radio districts?",
+      "CHOICE A": "Three",
+      "CHOICE B": "Seven",
+      "CHOICE C": "Eight",
+      "ANSWER": "Nine",
+      "FEED-BACK": "Feedback: \rThe correct answer is nine because the Philippines is divided into nine amateur radio districts. Each district has its own designated call sign prefix, allowing for better organization and communication among amateur radio operators throughout the country."
+    },
+    {
+      "NO.": "181",
+      "QUESTION": "181. Western Visayas belongs to which Amateur Radio District?",
+      "CHOICE A": "District 7",
+      "CHOICE B": "District 4",
+      "CHOICE C": "District 5",
+      "ANSWER": "District 6",
+      "FEED-BACK": "Feedback: \rWestern Visayas belongs to Amateur Radio District 6."
+    },
+    {
+      "NO.": "182",
+      "QUESTION": "182. Regions IX, X, and XII belong to which Amateur Radio District?",
+      "CHOICE A": "District No. 9",
+      "CHOICE B": "District No. 7",
+      "CHOICE C": "District No. 6",
+      "ANSWER": "District No. 8",
+      "FEED-BACK": "Feedback: \rRegions IX, X, and XII belong to District No. 8 because the answer is the only option that includes all three regions. The other options do not include all of the mentioned regions."
+    },
+    {
+      "NO.": "183",
+      "QUESTION": "183. What is an amateur radio operator?",
+      "CHOICE A": "One that has nothing to do",
+      "CHOICE B": "One who operates the station",
+      "CHOICE C": "None of the above",
+      "ANSWER": "Someone who performs communication for self-training and experimentation",
+      "FEED-BACK": "Feedback: \rAn amateur radio operator is someone who engages in communication for the purpose of self-training and experimentation. This individual uses radio equipment to communicate with others and explore various aspects of radio technology. They are not professionals or experts in the field, but rather enthusiasts who enjoy learning and experimenting with radio communication.\rAn amateur radio operator is someone who engages in communication for the purpose of self-training and experimentation. This individual uses radio equipment to co"
+    },
+    {
+      "NO.": "184",
+      "QUESTION": "184. IARU stands for",
+      "CHOICE A": "Intercontinental Amateur Radio Union",
+      "CHOICE B": "Intercontinental Amateur Relay Union",
+      "CHOICE C": "International Amateur Relay Union",
+      "ANSWER": "International Amateur Radio Union",
+      "FEED-BACK": "Feedback: \nThe correct answer is \"International Amateur Radio Union.\" IARU is an international organization that represents the interests of amateur radio operators worldwide. It promotes amateur radio as a hobby and facilitates international communication and cooperation among amateur radio operators. The term \"radio\" in the answer option suggests the involvement of radio communication, while \"international\" indicates the global scope of the organization."
+    },
+    {
+      "NO.": "185",
+      "QUESTION": "185. Portable operation must not extend beyond _____ month in any other area without obtaining a specific authority for continued operation?",
+      "CHOICE A": "3 months",
+      "CHOICE B": "1 week",
+      "CHOICE C": "3 days",
+      "ANSWER": "1 month",
+      "FEED-BACK": "Feedback: \rPortable operation must not extend beyond one month in any other area without obtaining a specific authority for continued operation. This means that if someone wants to operate their portable device in a different area for more than one month, they need to obtain permission or authorization to do so. This ensures that portable operations are regulated and controlled, preventing any potential misuse or interference with other devices or systems."
+    },
+    {
+      "NO.": "186",
+      "QUESTION": "186. Which of the the following frequency bands allocated by the NTC to the amateur Radio Service in the Philippines belongs to High Frequency (HF).",
+      "CHOICE A": "144.000 - 146.000 MHz",
+      "CHOICE B": "24.000 - 24.050 GHz",
+      "CHOICE C": "430.000 - 440.000 MHz",
+      "ANSWER": "7.000 - 7.200 MHz",
+      "FEED-BACK": "Feedback: \r7.000 , 7.200 MHz (HF), 144.000 , 146.000 MHz (VHF), 430.000 , 440.000 MHz (UHF), 24.000 , 24.050 GHz (SHF)"
+    },
+    {
+      "NO.": "187",
+      "QUESTION": "187. Before transmitting on the frequency 145.000 MHz a station should -----to make sure that no distress traffic is being sent. This provision does not apply to a station in ditress",
+      "CHOICE A": "Make short announcements only",
+      "CHOICE B": "Transmit short and clear messages",
+      "CHOICE C": "Listen for a carefully and transmit immediately",
+      "ANSWER": "Listen on this frequency for a reasonable period",
+      "FEED-BACK": "Feedback: \rBefore transmitting on the frequency 145.000 MHz, a station should listen on this frequency for a reasonable period to make sure that no distress traffic is being sent. This is important to ensure that the channel is clear and not being used for emergency communications. It is necessary for stations to take this precaution to avoid interfering with any ongoing distress transmissions. However, this provision does not apply to a station in distress, as they are authorized to transmit immediately without listening for a reasonable period."
+    },
+    {
+      "NO.": "188",
+      "QUESTION": "188. The average passing grade of the amateur examination is 70% provided there is no grade below__%?",
+      "CHOICE A": "10 %",
+      "CHOICE B": "20 %",
+      "CHOICE C": "40 %",
+      "ANSWER": "50 %",
+      "FEED-BACK": "Feedback: \rThe correct answer is 50%. This means that in order to maintain an average passing grade of 70%, there cannot be any grades below 50%. If there were grades below 50%, the average passing grade would be lower than 70%."
+    },
+    {
+      "NO.": "189",
+      "QUESTION": "189. In order to pass the written examination, the candidate must obtain an average of",
+      "CHOICE A": "60%",
+      "CHOICE B": "70%",
+      "CHOICE C": "50%",
+      "ANSWER": "70% with no grade below 50% for any element\"",
+      "FEED-BACK": "Feedback: \rTo pass the written examination, the candidate must achieve an average of 70% with no grade below 50% for any element. This means that the candidate's overall average score must be at least 70%, and they cannot score below 50% in any individual section or component of the examination. This requirement ensures that the candidate demonstrates a minimum level of competence in each element of the exam, while also maintaining a satisfactory overall performance."
+    },
+    {
+      "NO.": "190",
+      "QUESTION": "190. If an amateur with a DU1ABC call sign drives to Baguio City for a day, how should he identify his mobile station when transmitting in radiotelephony?",
+      "CHOICE A": "DU3ABC mobile 2",
+      "CHOICE B": "DU4ABC mobile 2",
+      "CHOICE C": "DU2ABC mobile 2",
+      "ANSWER": "DU1ABC mobile 2",
+      "FEED-BACK": "Feedback: \rThe correct answer is DU1ABC mobile 2. The question states that the individual has a call sign of DU1ABC, indicating that they are an amateur with a call sign in the DU1 region. When operating their mobile station in Baguio City, they should identify themselves using their assigned call sign, DU1ABC, followed by \"mobile 2\" to indicate that they are operating a mobile station."
+    },
+    {
+      "NO.": "191",
+      "QUESTION": "191. How long must be a radio amateur logbook preserved?",
+      "CHOICE A": "3 years",
+      "CHOICE B": "4 years",
+      "CHOICE C": "1 year",
+      "ANSWER": "2 years",
+      "FEED-BACK": "Feedback: \rA radio amateur logbook must be preserved for 2 years. This is important for record-keeping and compliance purposes. Keeping logbooks for this duration allows radio amateurs to maintain a historical record of their activities and communications. It also ensures that they have the necessary documentation in case of any regulatory audits or inquiries. By preserving logbooks for 2 years, radio amateurs can demonstrate their adherence to regulations and provide evidence of their radio operations if required."
+    },
+    {
+      "NO.": "192",
+      "QUESTION": "192. In radioteletype transmission, the frequency shift shall not exceed",
+      "CHOICE A": "750 Hz",
+      "CHOICE B": "800 Hz",
+      "CHOICE C": "250 Hz",
+      "ANSWER": "850 Hz",
+      "FEED-BACK": "Feedback: \rIn radioteletype transmission, the frequency shift refers to the difference between the mark and space frequencies. The mark frequency represents a binary \"1\" and the space frequency represents a binary \"0\". The question asks for the maximum frequency shift allowed. The correct answer is 850 Hz, indicating that the mark and space frequencies should not differ by more than 850 Hz in radioteletype transmission."
+    },
+    {
+      "NO.": "193",
+      "QUESTION": "193. This channel is used only for emergency communications and general calling for radio telephony",
+      "CHOICE A": "145+/-75KHz",
+      "CHOICE B": "145+/-50KHz",
+      "CHOICE C": "None of the above",
+      "ANSWER": "145+/-25KHz",
+      "FEED-BACK": "Feedback: \rThe correct answer is 145+/-25KHz. This frequency range is commonly used for emergency communications and general calling in radio telephony. It allows for a sufficient bandwidth to transmit important information during emergencies and allows for clear and effective communication. The other frequency ranges mentioned (145+/-75KHz and 145+/-50KHz) are not commonly used for emergency communications and may not provide the same level of reliability and clarity."
+    },
+    {
+      "NO.": "194",
+      "QUESTION": "194. The combination of letters and numbers to identify a radio station is known as?",
+      "CHOICE A": "Address",
+      "CHOICE B": "Call name",
+      "CHOICE C": "Handle",
+      "ANSWER": "Call sign",
+      "FEED-BACK": "Feedback: \rA call sign is a unique combination of letters and numbers used to identify a radio station. It serves as a distinctive identifier for each station and helps in communication and broadcasting. Unlike an address or handle, a call sign specifically refers to the identification of a radio station. A call name is not a commonly used term in this context, making call sign the most appropriate answer."
+    },
+    {
+      "NO.": "195",
+      "QUESTION": "195. Bicol belongs to which Amateur Radio District?",
+      "CHOICE A": "District 7",
+      "CHOICE B": "District 2",
+      "CHOICE C": "District 5",
+      "ANSWER": "District 4",
+      "FEED-BACK": "Feedback: \rBicol belongs to District 4 in terms of Amateur Radio."
+    },
+    {
+      "NO.": "196",
+      "QUESTION": "196. An amateur radio station log book with a distress traffic entry should be kept for a period of",
+      "CHOICE A": "1 year",
+      "CHOICE B": "3 years",
+      "CHOICE C": "5 years",
+      "ANSWER": "2 years",
+      "FEED-BACK": "Feedback: \rAn amateur radio station log book with a distress traffic entry should be kept for a period of 2 years. This is important for record-keeping purposes and to comply with regulations. Keeping the log book for this duration allows for easy access to information in case of any inquiries or investigations related to the distress traffic. It also ensures that the information is available for a reasonable amount of time, without the need to retain it indefinitely."
+    },
+    {
+      "NO.": "197",
+      "QUESTION": "197. One of the grounds for the revocation/suspension of a radio amateur license is",
+      "CHOICE A": "None of the above",
+      "CHOICE B": "Sending coded messages",
+      "CHOICE C": "Using commercial frequency",
+      "ANSWER": "Violations of the provisions of the radio control law",
+      "FEED-BACK": "Feedback: \rThe correct answer is violations of the provisions of the radio control law. This is because radio amateur licenses are granted with certain rules and regulations that need to be followed. If a licensee violates these provisions, their license can be suspended or revoked as a consequence. Using commercial frequency or sending coded messages are also not allowed, but they are not specifically mentioned as grounds for revocation/suspension in the question."
+    },
+    {
+      "NO.": "198",
+      "QUESTION": "198. What regions are under amateur District 8?",
+      "CHOICE A": "Region IX, Region X",
+      "CHOICE B": "Region X, Region XI",
+      "CHOICE C": "Region VIII, Region IX",
+      "ANSWER": "Region IX, Region XII",
+      "FEED-BACK": "Feedback: \rAmateur District 8 consists of Region IX and Region XII."
+    },
+    {
+      "NO.": "199",
+      "QUESTION": "199. A station in the amateur service installed on board a vehicle or vessel and intended to be used while in motion or during halts at unspecified points.",
+      "CHOICE A": "Amateur Portable Station",
+      "CHOICE B": "Amateur Fixed Station",
+      "CHOICE C": "Amateur Satellite Station",
+      "ANSWER": "Amateur Mobile Station",
+      "FEED-BACK": "Feedback: \rAn amateur mobile station refers to a station in the amateur service that is installed on a vehicle or vessel and is designed to be used while in motion or during halts at unspecified points. This type of station allows amateur radio operators to communicate while on the move, making it ideal for activities such as mobile operations, emergency communications, or participating in events that require constant movement. Unlike a fixed station that is stationary, an amateur mobile station provides flexibility and the ability to communicate from different locations."
+    },
+    {
+      "NO.": "200",
+      "QUESTION": "200. When is a citizen of another country qualified to take the examination and apply for an amateur license here?",
+      "CHOICE A": "When his country has the same amateur radio regulations as the Philippines",
+      "CHOICE B": "When his country extends the same privilege to all nationals as far as examination is concerned",
+      "CHOICE C": "When his country extends the same privilege to Filipino nationals as far as licensing is concerned",
+      "ANSWER": "When his country extends the same privilege to Filipino nationals as far as examination is concerned",
+      "FEED-BACK": "Feedback: \nA citizen of another country is qualified to take the examination and apply for an amateur license in the Philippines when his country extends the same privilege to Filipino nationals as far as the examination is concerned. This means that if Filipino nationals are allowed to take the examination in the citizen's country, then the citizen can also take the examination in the Philippines."
+    },
+    {
+      "NO.": "201",
+      "QUESTION": "201. Naga City is under what amateur radio district?",
+      "CHOICE A": "1",
+      "CHOICE B": "2",
+      "CHOICE C": "3",
+      "ANSWER": "4",
+      "FEED-BACK": "Feedback: \rNaga City is under amateur radio district 4."
+    },
+    {
+      "NO.": "202",
+      "QUESTION": "202. The maximum Equivalent Isotropically Radiated Power (e.i.r.p.) of stations in the amateur service using frequencies in the band 472-479 kHz shall not exceed ________.",
+      "CHOICE A": "10 W",
+      "CHOICE B": "1000 W",
+      "CHOICE C": "100 W",
+      "ANSWER": "1 W",
+      "FEED-BACK": "Feedback: \rRelevant ITU Footnotes: 5.A123 The maximum Equivalent Isotropically Radiated Power (e.i.r.p.) of stations in the amateur service using frequencies in the band 472-479 kHz shall not exceed 1 W."
+    },
+    {
+      "NO.": "203",
+      "QUESTION": "203. Government agency which grants permits for the use of radio frequencies for wireless telephone & telegraph systems and radio communication systems including amateur radio communications and radio broadcasting systems.",
+      "CHOICE A": "PARA",
+      "CHOICE B": "DOTC",
+      "CHOICE C": "SEC",
+      "ANSWER": "NTC",
+      "FEED-BACK": "Feedback: \rThe correct answer is NTC. NTC stands for National Telecommunications Commission, which is a government agency responsible for granting permits for the use of radio frequencies for various communication systems, including wireless telephone and telegraph systems, radio communication systems, amateur radio communications, and radio broadcasting systems."
+    },
+    {
+      "NO.": "204",
+      "QUESTION": "204. In radio teletype transmission, the station must identify by transmitting the call sign at the start, end and at least once every ______?",
+      "CHOICE A": "30 minutes",
+      "CHOICE B": "10 minutes",
+      "CHOICE C": "Never",
+      "ANSWER": "5 minutes",
+      "FEED-BACK": "Feedback: \rIn radio teletype transmission, it is necessary for the station to identify itself by transmitting the call sign at the beginning, end, and at least once every 5 minutes. This ensures that other stations can easily identify and communicate with the transmitting station. By regularly transmitting the call sign, it helps maintain clear and organized communication in the radio teletype system."
+    },
+    {
+      "NO.": "205",
+      "QUESTION": "205. Class A license shall be authorized to operate HF radio station with an output power not exceeding _____watts on PEP single sideband suppressed carrier.",
+      "CHOICE A": "500 watts",
+      "CHOICE B": "100 watts",
+      "CHOICE C": "2000 watts",
+      "ANSWER": "1000 watts",
+      "FEED-BACK": "Feedback: \rClass A licenses are authorized to operate HF radio stations with an output power not exceeding a certain number of watts on PEP single sideband suppressed carrier. The given correct answer of 1000 watts indicates that a Class A license allows for an output power of up to 1000 watts."
+    },
+    {
+      "NO.": "206",
+      "QUESTION": "206. Regions XI, XIII, and ARMM belong to which Amateur Radio District?",
+      "CHOICE A": "District No. 8",
+      "CHOICE B": "District No. 13",
+      "CHOICE C": "District No. 10",
+      "ANSWER": "District No. 9",
+      "FEED-BACK": "Feedback: \rRegions XI, XIII, and ARMM belong to Amateur Radio District No. 9."
+    },
+    {
+      "NO.": "207",
+      "QUESTION": "207. It is composed of the Amateur Radio Consultative Panel and persons or offices designated by the NTC shall formulate a question pool which shall be used for the amateur radio examinations.",
+      "CHOICE A": "Examination Pool Committee",
+      "CHOICE B": "Radio Operators Examination Committee",
+      "CHOICE C": "Operators Pool Committee",
+      "ANSWER": "Question Pool Committee",
+      "FEED-BACK": "Feedback: \rA question pool committee composed of the Amateur Radio Consultative Panel and persons or offices designated by the NTC shall formulate a question pool which shall be used for the amateur radio examinations. They shall meet periodically to update and improve the question pool."
+    },
+    {
+      "NO.": "208",
+      "QUESTION": "208. Zamboanga Peninsula belongs to which Amateur Radio District?",
+      "CHOICE A": "District 6",
+      "CHOICE B": "District 7",
+      "CHOICE C": "District 9",
+      "ANSWER": "District 8",
+      "FEED-BACK": "Feedback: \rZamboanga Peninsula belongs to Amateur Radio District 8."
+    },
+    {
+      "NO.": "209",
+      "QUESTION": "209. Who shall be allowed to sell and import amateur transceivers?",
+      "CHOICE A": "Telecom Companies",
+      "CHOICE B": "Only DOTC accredited radio dealers",
+      "CHOICE C": "Only PARA accredited radio dealers",
+      "ANSWER": "Only NTC accredited radio dealers",
+      "FEED-BACK": "Feedback: \rOnly NTC accredited radio dealers shall be allowed to sell and import amateur transceivers. This means that the National Telecommunications Commission (NTC) has authorized certain radio dealers to engage in the sale and importation of amateur transceivers. These dealers have met the necessary requirements and standards set by the NTC, ensuring that they have the knowledge and expertise to handle and distribute these devices. It is important to ensure that only accredited dealers are involved in the sale and importation of amateur transceivers to maintain quality and adherence to regulations."
+    },
+    {
+      "NO.": "210",
+      "QUESTION": "210. When should a radio statio license without modification be filed for renewal?",
+      "CHOICE A": "90 days before expiration date",
+      "CHOICE B": "60 days before expiration date",
+      "CHOICE C": "100 days before expiration date",
+      "ANSWER": "30 days before expiration date",
+      "FEED-BACK": "Feedback: \rThe correct answer is 30 days before the expiration date. This is the time frame within which a radio station license should be filed for renewal without any modifications. Filing within this period ensures that the renewal process is initiated in a timely manner, allowing for any necessary paperwork and procedures to be completed before the license expires. Filing too early or too late may result in unnecessary delays or complications in the renewal process."
+    },
+    {
+      "NO.": "211",
+      "QUESTION": "211. What is the radiotelegraph distress signal?",
+      "CHOICE A": "QTH",
+      "CHOICE B": "Contact",
+      "CHOICE C": "QSO",
+      "ANSWER": "SOS",
+      "FEED-BACK": "Feedback: \rSOS is the radiotelegraph distress signal. It is a universally recognized signal used to indicate an emergency. The letters \"SOS\" do not actually stand for any specific words, but they were chosen because they are easily recognizable and can be understood in Morse code. This distress signal is used to call for help in situations where immediate assistance is required, such as in maritime or aviation emergencies."
+    },
+    {
+      "NO.": "212",
+      "QUESTION": "212. What is the minimum age requirement for amateur is?",
+      "CHOICE A": "There are no minimum age requirements",
+      "CHOICE B": "12 years for class A, B. C",
+      "CHOICE C": "9 years for class D",
+      "ANSWER": "12 years for class A, B. C and 9 years for class D",
+      "FEED-BACK": "Feedback: \rThe minimum age requirement for amateur is 12 years for class A, B, and C. Additionally, the minimum age requirement for class D is 9 years."
+    },
+    {
+      "NO.": "213",
+      "QUESTION": "213. What element shall be required from a holder of a valid 1st /or 2nd class commercial radiotelegraph operator certificate to pass to secure a Class B amateur license?",
+      "CHOICE A": "Element IV",
+      "CHOICE B": "Element I & II",
+      "CHOICE C": "Element III",
+      "ANSWER": "Element II",
+      "FEED-BACK": "Feedback: \rTo secure a Class B amateur license, a holder of a valid 1st/2nd class commercial radiotelegraph operator certificate needs to pass Element II. This means that the individual must demonstrate knowledge and proficiency in the topics covered in Element II of the licensing examination. The specific content of Element II may vary depending on the regulatory authority, but it typically includes subjects such as radio wave propagation, radio operating procedures, electrical principles, and FCC rules and regulations."
+    },
+    {
+      "NO.": "214",
+      "QUESTION": "214. The IARU Region 3 covers",
+      "CHOICE A": "The Americas",
+      "CHOICE B": "Antarctica",
+      "CHOICE C": "Europe, Africa, Middle East & Northern Asia",
+      "ANSWER": "Asia-Pacific",
+      "FEED-BACK": "Feedback: \rIARU Region 3 covers the Asia-Pacific region. This includes countries in Asia such as Japan, China, Australia, and New Zealand, as well as countries in the Pacific region such as Fiji, Samoa, and Papua New Guinea. The other regions mentioned, Europe, Africa, Middle East & Northern Asia, and the Americas, are covered by different IARU regions."
+    },
+    {
+      "NO.": "215",
+      "QUESTION": "215. A Class “A” licensee is authorized to operate an HF fixed and/or mobile radio station with an output power not to exceed ________ on a continuous wave (CW) or two (2) kilowatts peak envelope power (PEP) single band suppressed carrier and state-of-the-art on VHF/UHF fixed, mobile or portable station.",
+      "CHOICE A": "3 kilowatts",
+      "CHOICE B": "500 watts",
+      "CHOICE C": "2 kilowatts",
+      "ANSWER": "1 kilowatt",
+      "FEED-BACK": "Feedback: \rA Class \"A\" licensee is authorized to operate an HF fixed and/or mobile radio station with an output power not to exceed 1 kilowatt on a continuous wave (CW) or two (2) kilowatts peak envelope power (PEP) single band suppressed carrier and state-of-the-art on VHF/UHF fixed, mobile, or portable station. This means that a Class \"A\" licensee can operate their radio station with a maximum output power of 1 kilowatt on HF frequencies and up to 2 kilowatts on VHF/UHF frequencies."
+    },
+    {
+      "NO.": "216",
+      "QUESTION": "216. The Philippines is divided into how many amateur radio districts?",
+      "CHOICE A": "7",
+      "CHOICE B": "10",
+      "CHOICE C": "8",
+      "ANSWER": "9",
+      "FEED-BACK": "Feedback: \rThe Philippines is divided into 9 amateur radio districts. This means that the country has established 9 separate regions or areas for amateur radio operators. Each district likely has its own specific regulations, frequencies, and licensing requirements for amateur radio operators."
+    },
+    {
+      "NO.": "217",
+      "QUESTION": "217. Amateur Class D certificate holders are authorized to operate",
+      "CHOICE A": "None of the above",
+      "CHOICE B": "UHF radio station",
+      "CHOICE C": "HF/SSB radio station",
+      "ANSWER": "VHF radio station only",
+      "FEED-BACK": "Feedback: \rAmateur Class D certificate holders are authorized to operate VHF radio stations only. This means that they are permitted to use Very High Frequency (VHF) radio equipment for communication purposes. They are not authorized to operate UHF radio stations or HF/SSB radio stations. Therefore, the correct answer is VHF radio station only."
+    },
+    {
+      "NO.": "218",
+      "QUESTION": "218. For holder of a 2nd class commercial radiotelegraph operator certificate to secure an amateur Class B license, it shall be required to pass the examination for element___? Only",
+      "CHOICE A": "5",
+      "CHOICE B": "1",
+      "CHOICE C": "6",
+      "ANSWER": "2",
+      "FEED-BACK": "Feedback: \rTo secure an amateur Class B license, a holder of a 2nd class commercial radiotelegraph operator certificate is required to pass the examination for element 2."
+    },
+    {
+      "NO.": "219",
+      "QUESTION": "219. What is the government agency which grants permits for the use of radio frequencies for wireless telephone and telegraph systems and radio communication systems including amateur radio stations and radio television broadcasting systems?",
+      "CHOICE A": "Bureau of Telecommunications Commission",
+      "CHOICE B": "Department of Transportation and Communication",
+      "CHOICE C": "Department of Tourism",
+      "ANSWER": "National Telecommunications Commission",
+      "FEED-BACK": "Feedback: \rThe National Telecommunications Commission is the government agency responsible for granting permits for the use of radio frequencies for various communication systems, including wireless telephone and telegraph systems, radio communication systems, amateur radio stations, and radio television broadcasting systems."
+    },
+    {
+      "NO.": "220",
+      "QUESTION": "220. Amateur Radio Operator \"Class C\" is",
+      "CHOICE A": "Foundation Class",
+      "CHOICE B": "Extra Class",
+      "CHOICE C": "General Class",
+      "ANSWER": "Technician Class",
+      "FEED-BACK": "Feedback: \rThe correct answer is Technician Class. The Technician Class is a type of Amateur Radio Operator license. This class is the entry-level license and allows operators to have limited privileges on the amateur radio bands."
+    },
+    {
+      "NO.": "221",
+      "QUESTION": "221. What is the correct posting of licenses?",
+      "CHOICE A": "Hidden in a safe place where no one will know that you own an amateur radio station for security reason.",
+      "CHOICE B": "Anywhere",
+      "CHOICE C": "At the front door of the house so everyone can see and know that you own an amateur radio station.",
+      "ANSWER": "In a conspicuous place in the radio station or a certified copy thereof be carried by the amateur.",
+      "FEED-BACK": "Feedback: \rThe correct posting of licenses is to have them in a conspicuous place in the radio station or to carry a certified copy of the license. This ensures that the license is easily accessible and visible to anyone who may need to verify the amateur radio station's legality. Keeping the license hidden or at the front door would not fulfill the requirement of having it in a conspicuous place."
+    },
+    {
+      "NO.": "222",
+      "QUESTION": "222. The Class A Amateur Examination shall cover",
+      "CHOICE A": "Elements V, VI, and VII",
+      "CHOICE B": "Element II only for Licensed ECE, 1PHN, 1RTG/2RTG",
+      "CHOICE C": "Element I only for Licensed ECE, 1PHN, 1RTG/2RTG",
+      "ANSWER": "Elements I, VIII, IX, and X",
+      "FEED-BACK": "Feedback: \rThe correct answer is Elements I, VIII, IX, and X. This means that the Class A Amateur Examination will cover topics related to Elements I, VIII, IX, and X. These elements are likely specific subjects or areas of knowledge that are relevant to the examination. It is not clear what these elements specifically refer to, but they are the topics that will be covered in the exam."
+    },
+    {
+      "NO.": "223",
+      "QUESTION": "223. An amateur who is a citizen or resident of a foreign country may be authorized to operate temporarily in the Philippines provided he is a holder of a license issued by their government and his country provides the same privilege to Filipino nationals. What do you call this partnership or arrangement on amateur licensing between two countries?",
+      "CHOICE A": "Memorandum of Agreement",
+      "CHOICE B": "Foreign Reciprocity Partnership",
+      "CHOICE C": "Agreement of Mutual Understanding",
+      "ANSWER": "Reciprocal Agreement",
+      "FEED-BACK": "Feedback: \rA reciprocal agreement refers to a partnership or arrangement between two countries where they mutually agree to recognize and honor each other's licenses or privileges. In the context of the given question, it means that the Philippines and the foreign country have an agreement that allows amateurs from both countries to operate temporarily in each other's territories if they hold a license issued by their respective governments and if the same privilege is provided to nationals of the other country."
+    },
+    {
+      "NO.": "224",
+      "QUESTION": "224. Who is responsible for the correct and proper operation of the amateur fixed station of an amateur club?",
+      "CHOICE A": "Director",
+      "CHOICE B": "QSL-Manager",
+      "CHOICE C": "President",
+      "ANSWER": "Trustee",
+      "FEED-BACK": "Feedback: \rThe trustee is responsible for the correct and proper operation of the amateur fixed station of an amateur club. This individual is entrusted with the management and control of the club's station and is responsible for ensuring that all operations are conducted in compliance with the rules and regulations set forth by the relevant authorities. The trustee plays a crucial role in maintaining the integrity and legality of the club's operations."
+    },
+    {
+      "NO.": "225",
+      "QUESTION": "225. Refers to a license or written authority to own and operate amateur radio, issued to a qualified person who has passed an appropriate amateur examination, for the period specified.",
+      "CHOICE A": "Club Station License",
+      "CHOICE B": "Extra Class License",
+      "CHOICE C": "Trustee License",
+      "ANSWER": "Amateur Radio Station License (ARSL)",
+      "FEED-BACK": "Feedback: \rAn Amateur Radio Station License (ARSL) refers to a license or written authority that is issued to a qualified person who has passed an appropriate amateur examination. This license allows the individual to own and operate an amateur radio station for a specified period. The ARSL is a document that grants the holder the legal permission to operate amateur radio equipment and participate in amateur radio activities. It signifies that the person has met the necessary qualifications and has the knowledge and skills required to operate a radio station safely and effectively."
+    },
+    {
+      "NO.": "226",
+      "QUESTION": "226. Batangas belongs to which Amateur Radio District?",
+      "CHOICE A": "District 5",
+      "CHOICE B": "District 2",
+      "CHOICE C": "District 7",
+      "ANSWER": "District 1",
+      "FEED-BACK": "Feedback: \nBatangas belongs to Amateur Radio District 1."
+    },
+    {
+      "NO.": "227",
+      "QUESTION": "227. A person who performs communication for self training and experimentation is called?",
+      "CHOICE A": "CB Amateur",
+      "CHOICE B": "Member of Civic Group",
+      "CHOICE C": "Radio Operator",
+      "ANSWER": "Amateur Radio Operator",
+      "FEED-BACK": "Feedback: \rAn amateur radio operator is a person who engages in communication for self-training and experimentation. They use amateur radio equipment and frequencies to communicate with other operators around the world. This hobby allows individuals to learn about radio technology, practice their communication skills, and experiment with different techniques. Amateur radio operators often participate in emergency communication networks and provide valuable assistance during times of crisis."
+    },
+    {
+      "NO.": "228",
+      "QUESTION": "228. Metro Manila belongs to which Amateur Radio District?",
+      "CHOICE A": "District 3",
+      "CHOICE B": "District 2",
+      "CHOICE C": "District 4",
+      "ANSWER": "District 1",
+      "FEED-BACK": "Feedback: \rMetro Manila belongs to District 1 in terms of Amateur Radio Districts."
+    },
+    {
+      "NO.": "229",
+      "QUESTION": "229. Refers to telecommunications by means of radio waves conducted by or among duly authorized amateur operators on a non-commercial basis.",
+      "CHOICE A": "Amateur Radio Transmission",
+      "CHOICE B": "Amateur Radio Broadcast",
+      "CHOICE C": "Amateur Radio Telecommunications",
+      "ANSWER": "Amateur Radio Communications",
+      "FEED-BACK": "Feedback: \rAmateur Radio Communications refers to the telecommunications conducted by authorized amateur operators on a non-commercial basis. This means that individuals who have obtained the necessary licenses and permits are able to communicate with each other using radio waves. It is important to note that this form of communication is not for commercial purposes, but rather for personal and hobbyist use."
+    },
+    {
+      "NO.": "230",
+      "QUESTION": "230. Batangas is under what Amateur Radio District?",
+      "CHOICE A": "District 4",
+      "CHOICE B": "District 2",
+      "CHOICE C": "District 3",
+      "ANSWER": "District 1",
+      "FEED-BACK": "Feedback: \rBatangas is under District 1 in terms of Amateur Radio."
+    },
+    {
+      "NO.": "231",
+      "QUESTION": "231. What is the correct identification in radiotelephony of a portable station with a call sign of 4F1KJA operating in amateur radio district 2?",
+      "CHOICE A": "Portable 2 4F1KJA",
+      "CHOICE B": "District 2 4F1KJA",
+      "CHOICE C": "4F1KJA district 2",
+      "ANSWER": "4F1KJA portable 2",
+      "FEED-BACK": "Feedback: \rPortable or mobile operation must be identified in radiotelephony by the call sign of the station suffixed by the word “portable” or “mobile” followed by the number of the district in which the operation is taking place, e.g. DU9RG portable 8, DU2JJT mobile 9 etc. The last figure may be omitted when the mobile or portable station is in the home district."
+    },
+    {
+      "NO.": "232",
+      "QUESTION": "232. The fixed amateur radio station of an association, club or society shall be licensed under the name of the",
+      "CHOICE A": "President",
+      "CHOICE B": "Manager",
+      "CHOICE C": "Owner",
+      "ANSWER": "Trustee",
+      "FEED-BACK": "Feedback: \nThe correct answer is \"trustee.\" In the context of the question, a fixed amateur radio station owned by an association, club, or society should be licensed under the name of the trustee. A trustee is someone who holds legal ownership or control over a property or organization on behalf of others. Therefore, it is appropriate for the trustee to be the licensed owner of the radio station in this scenario."
+    },
+    {
+      "NO.": "233",
+      "QUESTION": "233. The frequencies allocated for amateur stations shall be used strictly in accordance with the",
+      "CHOICE A": "Mode",
+      "CHOICE B": "Type",
+      "CHOICE C": "Manner",
+      "ANSWER": "class of the operating station",
+      "FEED-BACK": "Feedback: \nThe frequencies allocated for amateur stations must be used strictly in accordance with the class of the operating station. This means that different classes of amateur stations have specific frequency bands assigned to them, and operators must operate within those bands. This ensures that there is organized and efficient use of the limited frequency spectrum available for amateur radio operations."
+    },
+    {
+      "NO.": "234",
+      "QUESTION": "234. The IARU Region 2 covers",
+      "CHOICE A": "Antarctica",
+      "CHOICE B": "Asia-Pacific",
+      "CHOICE C": "Europe, Africa, Middle East & Northern Asia",
+      "ANSWER": "The Americas",
+      "FEED-BACK": "Feedback: \rThe IARU Region 2 covers the Americas. This means that it includes North, Central, and South America, as well as the Caribbean. The other options, such as Europe, Africa, Middle East & Northern Asia, Asia-Pacific, and Antarctica, are covered by different regions of the International Amateur Radio Union (IARU)."
+    },
+    {
+      "NO.": "235",
+      "QUESTION": "235. The call sign of a fixed amateur station with characters with at least ___ high shall be posted at the entrance of the premises where it is located?",
+      "CHOICE A": "20 cm",
+      "CHOICE B": "15 cm",
+      "CHOICE C": "5 cm",
+      "ANSWER": "10 cm",
+      "FEED-BACK": "Feedback: \rThe call sign of a fixed amateur station with characters with at least 10 cm high shall be posted at the entrance of the premises where it is located. This is important for identification and compliance with regulations."
+    },
+    {
+      "NO.": "236",
+      "QUESTION": "236. What is the latest Revised Amateur Radio Regulations?",
+      "CHOICE A": "Commonwealth Act No. 546-571",
+      "CHOICE B": "Ministry Circular No. 87-174",
+      "CHOICE C": "Memorandum Circular No. 02-03-87",
+      "ANSWER": "Memorandum Circular No. 03-08-2012",
+      "FEED-BACK": "Feedback: \rThe latest Revised Amateur Radio Regulations is Memorandum Circular No. 03-08-2012. This circular was issued on March 8, 2012, and it contains the updated regulations and guidelines for amateur radio operators. It is the most recent document specifically addressing the rules and regulations for amateur radio in the given options."
+    },
+    {
+      "NO.": "237",
+      "QUESTION": "237. A radio station in the amateur service installed on board a vehicle or vessel and intended to be used while in motion or during halts at unspecified points is an",
+      "CHOICE A": "Amateur Movable Station",
+      "CHOICE B": "Amateur Radio Station",
+      "CHOICE C": "Amateur Portable Station",
+      "ANSWER": "Amateur Mobile Station",
+      "FEED-BACK": "Feedback: \rAn amateur mobile station refers to a radio station in the amateur service that is installed on a vehicle or vessel and is intended to be used while in motion or during halts at unspecified points. This type of station allows amateur radio operators to communicate while on the move, providing flexibility and convenience for communication purposes."
+    },
+    {
+      "NO.": "238",
+      "QUESTION": "238. Amateur Radio Operator \"Class C\" is",
+      "CHOICE A": "General Class",
+      "CHOICE B": "Foundation Class",
+      "CHOICE C": "Extra Class",
+      "ANSWER": "Technician Class",
+      "FEED-BACK": "Feedback: \rThe correct answer is Technician Class. The Technician Class is a license class for amateur radio operators. It is the entry-level license and allows operators to have limited privileges on the amateur radio bands. This class requires passing a written exam which covers basic regulations, operating practices, and electronics theory. Technicians have access to a specific set of frequency bands and modes, allowing them to communicate with other amateur radio operators locally and sometimes globally. This class is often the starting point for individuals interested in amateur radio and provides a foundation for further advancement in the hobby."
+    },
+    {
+      "NO.": "239",
+      "QUESTION": "239. What document shall a duly accredited amateur club enter into with NTC for the management of its members in the proper use of the amateur frequency bands and prevention of harmful interference?",
+      "CHOICE A": "Public Private Partnership",
+      "CHOICE B": "Accreditation Papers",
+      "CHOICE C": "Radio Control Agreement",
+      "ANSWER": "Memorandum of Agreement",
+      "FEED-BACK": "Feedback: \rA duly accredited amateur club needs to enter into a Memorandum of Agreement with the National Telecommunications Commission (NTC) for the management of its members in the proper use of the amateur frequency bands and prevention of harmful interference. This agreement will outline the responsibilities and obligations of both parties in ensuring the appropriate use of the frequency bands and preventing any interference that may cause harm. It will serve as a formal agreement that establishes the guidelines and regulations for the club's operations within the amateur frequency bands."
+    },
+    {
+      "NO.": "240",
+      "QUESTION": "240. Holders of first class or second class radiotelegraphy certificate shall be required to pass___ only in order to secure class “B” certificate?",
+      "CHOICE A": "Element 4",
+      "CHOICE B": "Element 1",
+      "CHOICE C": "Element 5",
+      "ANSWER": "Element 2",
+      "FEED-BACK": "Feedback: \rIn order to secure a class \"B\" certificate, holders of first class or second class radiotelegraphy certificates are only required to pass Element 2."
+    },
+    {
+      "NO.": "241",
+      "QUESTION": "241. Region III belongs to which Amateur Radio District?",
+      "CHOICE A": "District No. 5",
+      "CHOICE B": "District No. 1",
+      "CHOICE C": "District No. 9",
+      "ANSWER": "District No. 3",
+      "FEED-BACK": "Feedback: \rRegion III belongs to District No. 3."
+    },
+    {
+      "NO.": "242",
+      "QUESTION": "242. It refers to a reasonably complete and sufficient combination of distinct radio equipment intended for and capable of being used either for transmission or reception of radio signals or both.",
+      "CHOICE A": "Transceiver",
+      "CHOICE B": "Radio Station",
+      "CHOICE C": "Repeater Station",
+      "ANSWER": "Radio Apparatus",
+      "FEED-BACK": "Feedback: \rThe term \"radio apparatus\" refers to a combination of distinct radio equipment that is capable of transmitting or receiving radio signals. This can include various components such as antennas, receivers, transmitters, and other necessary equipment. It is a broad term that encompasses all the necessary tools and devices needed for radio communication."
+    },
+    {
+      "NO.": "243",
+      "QUESTION": "243. Which of the following Amateur Examination subjects is about Circuit Components?",
+      "CHOICE A": "Element III",
+      "CHOICE B": "Element II",
+      "CHOICE C": "Element IV",
+      "ANSWER": "Element VI",
+      "FEED-BACK": "Feedback: \rElement VI is the correct answer because it is the subject that covers Circuit Components in the Amateur Examination. The other options, Element IV, Element II, and Element III, do not specifically focus on Circuit Components."
+    },
+    {
+      "NO.": "244",
+      "QUESTION": "244. The International Amateur Radio Union (IARU) is a member of which ITU Sector?",
+      "CHOICE A": "ITU-S",
+      "CHOICE B": "ITU-T",
+      "CHOICE C": "ITU-D",
+      "ANSWER": "ITU-R",
+      "FEED-BACK": "Feedback: \nITU-R (ITU Radiocommunication)"
+    },
+    {
+      "NO.": "245",
+      "QUESTION": "245. Amateur Class D licensee is authorized to operate VHF radio sets with a maximum power of",
+      "CHOICE A": "300 watts",
+      "CHOICE B": "200 watts",
+      "CHOICE C": "500 watts",
+      "ANSWER": "100 watts",
+      "FEED-BACK": "Feedback: \rAn Amateur Class D licensee is authorized to operate VHF radio sets with a maximum power of 100 watts. This means that they are allowed to transmit at a power level of up to 100 watts when using VHF radio sets."
+    },
+    {
+      "NO.": "246",
+      "QUESTION": "246. What is the United Nations agency based in Geneva, Switzerland which coordinates the global use of the radio spectrum?",
+      "CHOICE A": "IARU",
+      "CHOICE B": "ARRL",
+      "CHOICE C": "FCC",
+      "ANSWER": "ITU",
+      "FEED-BACK": "Feedback: \rThe correct answer is ITU. The International Telecommunication Union (ITU) is the United Nations agency based in Geneva, Switzerland that coordinates the global use of the radio spectrum. They allocate frequency bands for different uses, such as broadcasting, satellite communications, and mobile phones, to ensure efficient and interference-free communication worldwide. The ITU also develops international regulations and standards for telecommunications technologies to promote global connectivity and cooperation in the field of radio communications."
+    },
+    {
+      "NO.": "247",
+      "QUESTION": "247. The call sign of a fixed amateur station with characters with at least ___ high shall be posted at the entrance of the premises where it is located?",
+      "CHOICE A": "25 cm",
+      "CHOICE B": "30 cm",
+      "CHOICE C": "3 cm",
+      "ANSWER": "10 cm",
+      "FEED-BACK": "Feedback: \rThe call sign of a fixed amateur station with characters at least 10 cm high should be posted at the entrance of the premises where it is located. This requirement ensures that the call sign is easily visible and identifiable by anyone entering the premises. It helps in maintaining transparency and compliance with regulations related to amateur radio operations."
+    },
+    {
+      "NO.": "248",
+      "QUESTION": "248. An amateur station so designed that it may conveniently be moved about from one place to another place or personally carried and be operated while in motion or during temporary halts.",
+      "CHOICE A": "Amateur Satellite Station",
+      "CHOICE B": "Amateur Mobile Station",
+      "CHOICE C": "Amateur Fixed Station",
+      "ANSWER": "Amateur Portable Station",
+      "FEED-BACK": "Feedback: \rAn amateur portable station is designed to be easily moved and operated while in motion or during temporary halts. This means that it can be conveniently carried from one place to another or personally transported. Unlike a fixed station, which is stationary, a portable station allows for flexibility and mobility. It is a suitable option for amateur radio operators who need to operate their equipment while on the move or in different locations."
+    },
+    {
+      "NO.": "249",
+      "QUESTION": "249. How much shall NTC fine any person who had been found to have violated the law with illegal possession and illegal transmission of an amateur transceiver?",
+      "CHOICE A": "P5,000 and/or imprisonment of not more than 5 years for the collective offenses",
+      "CHOICE B": "P5,000 and/or imprisonment of not more than 3 years for each and every offense",
+      "CHOICE C": "P5,000 and/or imprisonment of not more than 2 years for each and every offense",
+      "ANSWER": "P2,000 and/or imprisonment of not more than 2 years for each and every offense",
+      "FEED-BACK": "Feedback: \rThe correct answer is P2-000 and/or imprisonment of not more than 2 years for each and every offense. This means that if a person is found to have violated the law with illegal possession and illegal transmission of an amateur transceiver, they can be fined up to P2-000 and/or imprisoned for a maximum of 2 years for each offense committed. This penalty is applicable for each individual offense and does not depend on the number of offenses committed collectively."
+    },
+    {
+      "NO.": "250",
+      "QUESTION": "250. Application for modification of the license shall be filed with the NTC for upgrading to a higher class of license, change of name, transfer of location of the fixed station or addition/deletion of transceiver",
+      "CHOICE A": "Permit to Transfer",
+      "CHOICE B": "Permit to Purchase",
+      "CHOICE C": "Construction Permit",
+      "ANSWER": "Modification of License",
+      "FEED-BACK": "Feedback: \rModification of License – Application for modification of the license shall be filed with the NTC for upgrading to a higher class of license, change of name, transfer of location of the fixed station or addition/deletion of transceiver."
+    },
+    {
+      "NO.": "251",
+      "QUESTION": "251. When shall persons other than the licensed be allowed to use the latters radio?",
+      "CHOICE A": "Under direct control",
+      "CHOICE B": "Under free control",
+      "CHOICE C": "Under direct supervision",
+      "ANSWER": "Both under direct supervision and under direct control of the addressee",
+      "FEED-BACK": "Feedback: \rPersons other than the licensed are allowed to use the latter's radio both under direct supervision and under direct control of the addressee. This means that the licensed person can allow others to use their radio as long as they are directly supervising or controlling the use of the radio. This ensures that the licensed person retains responsibility and oversight for the radio's usage, even when someone else is operating it."
+    },
+    {
+      "NO.": "252",
+      "QUESTION": "252. Class “B” amateurs shall be allowed to take the examination for Class “A”pro- vid",
+      "CHOICE A": "1 month",
+      "CHOICE B": "2 months",
+      "CHOICE C": "15months",
+      "ANSWER": "12 months",
+      "FEED-BACK": "Feedback: \rAccording to the given statement, Class \"B\" amateurs can take the examination for Class \"A\" if they have held a valid Class \"B\" license for at least a certain period of time. The correct answer is 12 months, which means that Class \"B\" amateurs must have held a valid Class \"B\" license for at least 12 months in order to be eligible to take the examination for Class \"A\"."
+    }
+            
+        ]
+    };
+
+    let currentMode = 'exam';
+    let userAnswers = {};
+    let shuffledExam = [];
+
+    // Utility to clean question text from your dataset format
+    function cleanQuestion(qText) {
+        // 1. Remove the preamble text if present
+        let clean = qText.replace(/<b><i>.*?<\/i><\/b>/gs, '');
+        clean = clean.replace(/Choose the correct answer:.*?<br>/gs, '');
+        // 2. Remove leading number like "1. " or "10. "
+        clean = clean.replace(/^\s*\d+\.\s*/, '');
+        // 3. Remove remaining HTML tags
+        clean = clean.replace(/<[^>]*>/g, '').trim();
+        return clean;
+    }
+
+    function setMode(mode) {
+        currentMode = mode;
+        document.getElementById('mode-exam').className = mode === 'exam' ? 'flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase bg-white shadow-sm text-blue-600' : 'flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase text-slate-500';
+        document.getElementById('mode-study').className = mode === 'study' ? 'flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase bg-white shadow-sm text-blue-600' : 'flex-1 px-4 py-2 rounded-lg text-xs font-bold uppercase text-slate-500';
+        
+        userAnswers = {};
+        initQuiz();
+    }
+
+    function initQuiz() {
+        const container = document.getElementById('quiz-container');
+        const resultArea = document.getElementById('result-area');
+        container.innerHTML = '';
+        resultArea.classList.add('hidden');
+        
+        shuffledExam = [...sourceData.data].sort(() => Math.random() - 0.5);
+        document.getElementById('nav-stats').innerText = `0 / ${shuffledExam.length} Questions`;
+
+        shuffledExam.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'bg-white rounded-2xl p-6 border border-slate-200 shadow-sm';
+            
+            // Create a pool of options: A, B, C, and the Answer
+            const optionsPool = [
+                item["CHOICE A"],
+                item["CHOICE B"],
+                item["CHOICE C"],
+                item["ANSWER"]
+            ].filter(Boolean); // Ensure no empty ones
+            
+            // Shuffle choices for the user
+            const shuffledChoices = optionsPool.sort(() => Math.random() - 0.5);
+
+            const optionsHTML = shuffledChoices.map(opt => `
+                <button onclick="handleSelect(${index}, '${opt.replace(/'/g, "\\'")}', this)" 
+                        class="option-btn w-full text-left p-4 rounded-xl border-2 border-slate-100 bg-slate-50 hover:bg-slate-100 font-semibold text-slate-700 flex justify-between items-center group">
+                    <span>${opt}</span>
+                    <div class="h-5 w-5 rounded-full border-2 border-slate-300 group-[.selected]:border-blue-500 group-[.selected]:bg-blue-500 group-[.selected]:shadow-[0_0_0_4px_rgba(37,99,235,0.15)]"></div>
+                </button>
+            `).join('');
+
+            card.innerHTML = `
+                <div class="flex gap-4 mb-5">
+                    <span class="bg-blue-600 text-white text-[10px] font-black h-6 w-6 rounded flex items-center justify-center flex-shrink-0">${index + 1}</span>
+                    <h3 class="text-lg font-bold text-slate-800 leading-snug">${cleanQuestion(item.QUESTION)}</h3>
+                </div>
+                <div class="grid gap-3" id="opts-${index}">${optionsHTML}</div>
+                <div id="fb-${index}" class="hidden mt-4"></div>
+            `;
+            container.appendChild(card);
+        });
+        updateProgress();
+    }
+
+    function handleSelect(idx, val, el) {
+        const parent = document.getElementById(`opts-${idx}`);
+        parent.querySelectorAll('.option-btn').forEach(b => b.classList.remove('selected', 'bg-blue-50', 'border-blue-500'));
+        
+        el.classList.add('selected');
+        userAnswers[idx] = val;
+
+        if (currentMode === 'study') {
+            triggerFeedback(idx, val);
+        }
+        updateProgress();
+    }
+
+    function triggerFeedback(idx, val) {
+        const item = shuffledExam[idx];
+        const fbDiv = document.getElementById(`fb-${idx}`);
+        const isCorrect = val === item.ANSWER;
+
+        fbDiv.className = `feedback-enter mt-4 p-4 rounded-xl border-l-4 ${isCorrect ? 'bg-green-50 border-green-500 text-green-800' : 'bg-red-50 border-red-500 text-red-800'}`;
+        fbDiv.innerHTML = `
+            <div class="text-xs font-black uppercase mb-1 tracking-wider">${isCorrect ? 'Correct Answer' : 'Incorrect Choice'}</div>
+            <p class="text-sm font-medium leading-relaxed">${item["FEED-BACK"] || `The correct answer is ${item.ANSWER}.`}</p>
+        `;
+        fbDiv.classList.remove('hidden');
+    }
+
+    function updateProgress() {
+        const total = shuffledExam.length;
+        const count = Object.keys(userAnswers).length;
+        const pct = Math.round((count / total) * 100);
+        
+        document.getElementById('pb-fill').style.width = pct + '%';
+        document.getElementById('progress-percent').innerText = pct + '%';
+        document.getElementById('nav-stats').innerText = `${count} / ${total} Questions`;
+    }
+
+    function gradeQuiz() {
+        const total = shuffledExam.length;
+        const answered = Object.keys(userAnswers).length;
+
+        if (answered < total) {
+            if (!confirm(`You have only answered ${answered} of ${total} questions. Grade now?`)) return;
+        }
+
+        let score = 0;
+        shuffledExam.forEach((item, idx) => {
+            const isCorrect = userAnswers[idx] === item.ANSWER;
+            if (isCorrect) score++;
+            triggerFeedback(idx, userAnswers[idx] || "Unanswered");
+        });
+
+        const pct = Math.round((score/total)*100);
+        const passed = pct >= 70;
+
+        const resultArea = document.getElementById('result-area');
+        resultArea.innerHTML = `
+            <div class="bg-slate-900 text-white rounded-3xl p-8 shadow-2xl relative overflow-hidden">
+                <div class="relative z-10 flex flex-col md:flex-row items-center gap-8">
+                    <div class="flex-1 text-center md:text-left">
+                        <h2 class="text-4xl font-black italic tracking-tighter mb-1">SCORE REPORT</h2>
+                        <p class="text-slate-400 font-bold uppercase text-xs tracking-[0.2em]">NTC Licensure Review</p>
+                        <div class="mt-6 flex justify-center md:justify-start gap-3 text-center">
+                            <div class="bg-slate-800 p-3 rounded-2xl min-w-[100px] border border-slate-700">
+                                <span class="block text-[10px] text-slate-500 font-black">CORRECT</span>
+                                <span class="text-2xl font-black">${score}/${total}</span>
+                            </div>
+                            <div class="bg-slate-800 p-3 rounded-2xl min-w-[100px] border border-slate-700">
+                                <span class="block text-[10px] text-slate-500 font-black">RESULT</span>
+                                <span class="text-2xl font-black ${passed ? 'text-green-400' : 'text-red-400'}">${passed ? 'PASS' : 'FAIL'}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="h-32 w-32 rounded-full border-[10px] border-blue-600 flex items-center justify-center bg-slate-800">
+                        <span class="text-3xl font-black">${pct}%</span>
+                    </div>
+                </div>
+            </div>
+        `;
+        resultArea.classList.remove('hidden');
+        window.scrollTo({top: 0, behavior: 'smooth'});
+
+        const btn = document.getElementById('submit-btn');
+        btn.innerText = "Try Another Random Set";
+        btn.onclick = () => location.reload();
+    }
+
+    window.onload = initQuiz;
+</script>
+</body>
+</html>
