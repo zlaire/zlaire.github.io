@@ -1,45 +1,100 @@
-
 <!doctype html>
 <html lang="en">
-  <head>
-
-  
+<head>
     <title>Site Maintenance</title>
     <meta charset="utf-8">
     <meta name="robots" content="noindex">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<!--
-    <meta charset="UTF-8" />
+    <!--
     <meta http-equiv="refresh" content="5; url=https://pnm.edu.ph/" />
     <script type="text/javascript">
       window.location.href = "https://pnm.edu.ph/";
     </script>
     <title>Page Redirection</title>
-
-    <!-- Note: don't tell people to `click` the link, just tell them that it is a link. 
     If you are not redirected automatically, follow this <a href="https://pnm.edu.ph/">Link</a>
     -->
-    
 
-            <style>
-              body { text-align: center; padding: 20px; font: 20px Helvetica, sans-serif; color: #333; background-color:#FFFFFF}
-              @media (min-width: 768px){
-                body{ padding-top: 150px; }
-              }
-              h1 { font-size: 50px; }
-              article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
-              a { color: #dc8100; text-decoration: none; }
-              a:hover { color: #333; text-decoration: none; }
-            </style>
-  </head>
-  <body>
+    <style>
+        body {
+            text-align: center;
+            padding: 20px;
+            font: 20px Helvetica, sans-serif;
+            color: #333;
+            background-color: #FFFFFF;
+        }
+        @media (min-width: 768px) {
+            body { padding-top: 150px; }
+        }
+        h1 { font-size: 50px; }
+        article { display: block; text-align: left; max-width: 650px; margin: 0 auto; }
+        a { color: #dc8100; text-decoration: none; }
+        a:hover { color: #333; text-decoration: none; }
+
+        #loginBox {
+            max-width: 380px;
+            margin: 60px auto;
+            padding: 24px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            text-align: left;
+        }
+        #loginBox h2 {
+            margin-top: 0;
+            font-size: 24px;
+        }
+        #passwordInput {
+            width: 100%;
+            box-sizing: border-box;
+            padding: 10px 12px;
+            font-size: 16px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #loginBox button {
+            width: 100%;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #dc8100;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        #loginBox button:hover {
+            background-color: #b86b00;
+        }
+        #loginError {
+            display: none;
+            color: #d32f2f;
+            font-size: 14px;
+            margin-top: 10px;
+            margin-bottom: 0;
+        }
+        #protectedContent {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loginBox">
+        <h2>Password Required</h2>
+        <form onsubmit="checkPassword(event)">
+            <input id="passwordInput" type="password" placeholder="Enter password" required autofocus>
+            <button type="submit">Unlock</button>
+            <p id="loginError"></p>
+        </form>
+    </div>
+
+    <div id="protectedContent">
         <article>
             <h1>We&rsquo;ll be back soon!</h1>
             <div>
                 <p>Sorry for the inconvenience but we&rsquo;re performing some maintenance at this moment.....</p>
                 <p>&mdash; icto.infra</p>
-                
             </div>
             <div style="display: flex; flex-direction: row; justify-content: space-between;">
                 <p class="day"></p>
@@ -48,44 +103,82 @@
                 <p class="second"></p>
             </div>
         </article>
-        <script>
-            const countDown = () => {
-                const countDay = new Date('December 31, 2025 00:00:00');
-                const now = new Date();
-                const counter = countDay - now;
-                const second = 1000;
-                const minute = second * 60;
-                const hour = minute * 60;
-                const day = hour * 24;
-                const textDay = Math.floor(counter / day);
-                const textHour = Math.floor((counter % day) / hour);
-                const textMinute = Math.floor((counter % hour) / minute);
-                const textSecond = Math.floor((counter % minute) / second)
-                document.querySelector(".day").innerText = textDay + ' Days';
-                document.querySelector(".hour").innerText = textHour + ' Hours';
-                document.querySelector(".minute").innerText = textMinute + ' Minutes';
-                document.querySelector(".second").innerText = textSecond + ' Seconds';
+
+        <br><br><br>
+        <a href="https://gitlab.cdmmis.com/goahead/">https://gitlab.cdmmis.com/goahead/</a><br><br>
+        <a href="https://gitlab.cdmmis.com/gs/">https://gitlab.cdmmis.com/gs/</a><br><br>
+        <a href="https://gitlab.cdmmis.com/imis/admin/">https://gitlab.cdmmis.com/imis/admin/</a><br><br>
+        <a href="https://gitlab.cdmmis.com/imis/client/">https://gitlab.cdmmis.com/imis/client/</a><br><br>
+        <a href="https://gitlab.cdmmis.com/undermaintenace/">https://gitlab.cdmmis.com/maintenance/</a><br><br><br>
+    </div>
+
+    <script>
+        const PASSWORD_SALT = "65663ea8ce5342d4b373cdccb21a6ecd";
+        const EXPECTED_HASH = "edfccc3b89c73057ce8164cd350a146131bd8e82a45dc14a770ea6d1110e5d70";
+
+        async function sha256Hex(text) {
+            const data = new TextEncoder().encode(text);
+            const hashBuffer = await crypto.subtle.digest("SHA-256", data);
+            const hashArray = Array.from(new Uint8Array(hashBuffer));
+            return hashArray.map(b => b.toString(16).padStart(2, "0")).join("");
+        }
+
+        async function checkPassword(event) {
+            if (event) event.preventDefault();
+            const inputEl = document.getElementById("passwordInput");
+            const errorEl = document.getElementById("loginError");
+            const password = inputEl.value;
+
+            if (!window.crypto || !window.crypto.subtle) {
+                errorEl.textContent = "Web Crypto API requires HTTPS or localhost.";
+                errorEl.style.display = "block";
+                return;
             }
-            countDown();
-            setInterval(countDown, 1000);
-        </script>
-    
-  </body>
 
-  
-        
-  <br>
-  <br>
-  <br>
-        <a href="https://gitlab.cdmmis.com/HWID_Activation.cmd">Download -HWID.cmd</a><br><br>
-        <a href="https://gitlab.cdmmis.com/KMS38_Activation.cmd">Download -KMS38.cmd</a><br><br>
-        <a href="https://gitlab.cdmmis.com/Ohook_Activation_AIO.cmd">Download -Ohook_AIO.cmd</a><br><br>
-        <a href="https://gitlab.cdmmis.com/Online_KMS_Activation.cmd">Download -Online_KMS.cmd</a><br><br>
-        <a href="https://gitlab.cdmmis.com/TSforge_Activation.cmd">Download -TSforge.cmd</a><br><br>
-        <a href="https://gitlab.cdmmis.com/Check_Activation_Status.cmd">Download -Check_Status.cmd</a><br><br>
+            const candidateHash = await sha256Hex(PASSWORD_SALT + password);
+            if (candidateHash === EXPECTED_HASH) {
+                document.getElementById("loginBox").style.display = "none";
+                document.getElementById("protectedContent").style.display = "block";
+                inputEl.value = "";
+                errorEl.style.display = "none";
+            } else {
+                errorEl.textContent = "Incorrect password. Please try again.";
+                errorEl.style.display = "block";
+                inputEl.value = "";
+                inputEl.focus();
+            }
+        }
 
+        const countDown = () => {
+            const countDay = new Date('December 31, 2025 00:00:00');
+            const now = new Date();
+            const counter = countDay - now;
+
+            if (counter <= 0) {
+                document.querySelector(".day").innerText = "0 Days";
+                document.querySelector(".hour").innerText = "0 Hours";
+                document.querySelector(".minute").innerText = "0 Minutes";
+                document.querySelector(".second").innerText = "0 Seconds";
+                return;
+            }
+
+            const second = 1000;
+            const minute = second * 60;
+            const hour = minute * 60;
+            const day = hour * 24;
+            const textDay = Math.floor(counter / day);
+            const textHour = Math.floor((counter % day) / hour);
+            const textMinute = Math.floor((counter % hour) / minute);
+            const textSecond = Math.floor((counter % minute) / second);
+            document.querySelector(".day").innerText = textDay + ' Days';
+            document.querySelector(".hour").innerText = textHour + ' Hours';
+            document.querySelector(".minute").innerText = textMinute + ' Minutes';
+            document.querySelector(".second").innerText = textSecond + ' Seconds';
+        };
+
+        countDown();
+        setInterval(countDown, 1000);
+    </script>
+
+</body>
 </html>
-
-
-
-
